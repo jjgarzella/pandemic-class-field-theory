@@ -1,0 +1,375 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{mathptmx,amsmath,colonequals}
+\usepackage{amssymb,gensymb,mathrsfs}
+\usepackage{amscd,amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[shortlabels]{enumitem}
+\usepackage{extarrows}
+\usepackage{tikz,tikz-cd}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{conj}[thm]{Conjecture}
+
+%\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{xca}[thm]{Exercise}
+
+%\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+
+\newcommand{\category}[1]{\textsf{#1}}
+
+% convenient renaming
+\newcommand{\isom}{\cong}
+\newcommand{\ins}{\subset}
+\newcommand{\dual}{\vee}
+\newcommand{\cross}{\times}
+
+% general text operators
+\newcommand{\Image}{\operatorname{Im}}
+\newcommand{\Coim}{\operatorname{Coim}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\colim}{\operatorname{colim}}
+
+% arrows
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\inj}{\xhookrightarrow{}}
+
+% context
+\newcommand{\basefield}{K}
+\newcommand{\basering}{R}
+
+% commalg specific?
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Tor}{\operatorname{Tor}}
+
+%\newcommand{\depth}{\operatorname{depth}}
+%\newcommand{\height}{\operatorname{height}}
+%\newcommand{\pd}{\operatorname{pd}}
+%\newcommand{\injd}{\operatorname{injd}}
+
+% algebraic geometry
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Spa}{\operatorname{Spa}}
+
+% custom ops here
+\newcommand{\Syl}{\operatorname{Syl}}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+
+
+% custom commands here
+
+\title{}
+\author{Jack J Garzella}
+
+\begin{document}
+
+\maketitle
+
+We'll start with a few corollaries of the calculation of the Braur Group.
+
+Corollary 1 in Wei's talk
+
+
+\begin{cor}
+	\begin{enumerate}[(1)]
+		\item \(Br(K^{unr}) = 0\)
+		\item \(H^{2}(I_{K},\mu_{n}) = 0\) for all \(n\) with \(0 \leq n\)
+		\item If \(M\) is a torsion \(I_{K}\)-module, then
+			\(H^{i}(I_{K},M) = 0\) for all \(i\) with \(2 \leq i\)
+		\item If \(M\) is a finite \(G_{K}\)-module, then
+			for all \(i\), \(\left| H^{i}(G_{K},M) \right| < \infty\) 
+			and for \(i\) with \(3 \leq i\), 
+			\(H^{i}(G_{K},M) = 0\).
+	\end{enumerate}
+\end{cor}
+
+We will state the following lemma without proof, it has been used before
+and it appears in Neukirch as Proposition 1.5.1
+
+\begin{lem}
+	% fix colim
+	If \(G = \lim_{i \in I} G_{i}\) and \(A = \colim_{i \in I} A_{i}\),
+	then we have 
+	\[
+		H^{n}(G,A) = \colim_{i \in I} H^{n}(G_{i},A_{i})
+	\] 
+	for all \(n\)
+\end{lem}
+
+By taking one either the \(G_{i}\) or the \(A_{i}\) to be identically
+\(G\) (resp. A), we get the following corollary:
+
+\begin{cor}\label{cor:lim:cohom}
+	\begin{enumerate}[(a)]
+		\item If \(G = \lim G_{i}\), then 
+			\(H^{n}(G,A) = \colim H^{n}(G_{i},A)\) for a fixed \(A\).
+		\item IF \(A = \colim A_{i}\), then 
+			\(H^{n}(G,A) = \colim H^{n}(G,A_{i})\) for a fixed \(G\).
+	\end{enumerate}
+\end{cor}
+
+It is this corollary that will be most useful to us.
+
+\begin{proof}
+	\begin{enumerate}[(1)]
+		\item The algebraic closure of \(K^{unr}\) is just \(\overline{K}\),
+			so we are trying to compute 
+			\(H^{2}(G_{\overline{K} / K^{unr}},\overline{K}^{\times})\).
+			First, we note that
+			 \[
+			 \lim_{K \ins L \ins K^{unr}} G_{\overline{K} / L} 
+			 = G_{\overline{K} / K^{unr}}
+			 \] 
+			where the limit is taken over the restriction maps.
+			This extends to a limit of cohomology by 
+			Corollary \ref{cor:lim:cohom} part (a), and
+			we have
+			\[
+				\colim_{K \ins L \ins K^{unr}} H^{i}(G_{\overline{K} / L}) 
+				= H^{i}(G_{\overline{K} / K^{unr}})
+			.\] 
+			And we notice that the right hand side we can replace using
+			our commutative diagram to get
+			\[
+				\colim_{[L:L^{\prime}]} \mathbb{Q} / \mathbb{Z}
+			\] 
+			This limit is zero, and we can see this through the coproduct
+			/coequalizer characterization of the colimit. 
+			A coequalizer is like taking a quotient, and vaguely, the 
+			equivalence relation is those things which eventually end up being
+			the same under these multiplication maps. 
+			But the maps are multipication by an (arbitrarily large) constant,
+			and the module is torsion.
+		\item Use the exact sequence (of modules) 
+			\[
+			1 \to \mu_{n} \to \overline{K}^{\cross} \to \overline{K}^{\cross}
+			\to 1
+			\] 
+			Then take the long exact sequence on cohomology, when we are using
+			\(I_{K}\) as the group for the cohomology.
+			We get 
+			\[
+				\ldots \to H^{1}(I_{K},\overline{K}^{\cross}) \to
+				H^{2}(I_{K}, \mu_{n}) \to H^{2}(I_{K},\overline{K}^{\cross})
+				\to \ldots
+			\] 
+			The group on the left is zero by Hilbert Theorem 90, and
+			it turns out that as \(I_{K} \isom \Gal\left( 
+			\overline{K} / K^{unr} \right)\), the first theorem 
+			says exactly that the group on the right is zero. 
+			We conclude our statement by exactness.
+			
+		\item 
+			It suffices to consider
+			finite (and thus torsion) modules, by Corollary \ref{cor:lim:cohom}.
+			First, we will reduce to cohomological dimension 2 by dimension
+			shifting. 
+			Assume \(H^{2}(M) = 0\) for all torsion modules \(M\).
+			First, fix \(M\) and embed it into an injective module \(I\) 
+			which is also torsion.
+			(Think \(\mathbb{Q} / \mathbb{Z}\)).
+			Now, the quotient will be torsion and we have the short exact sequence
+			\[
+			\begin{tikzcd}
+			0 \arrow{r}{} & M \arrow{r}{} & 
+			I \arrow{r}{} & I / M \arrow{r}{} & 0
+			\end{tikzcd}
+			\]
+			Now, taking long exact sequences, we get
+			\[
+				\ldots \to H^{2}(\frac{I}{M}) \to 
+				H^{3}(M) \to H^{3}(I) \to \ldots
+			\] 
+			and by assumption, the \(H^{2}(I / M)\) must be zero.
+			As \(I\) is injective, its \(H^{3}\) is zero and we conclude
+			that \(H^{3}(M)\) is zero. 
+			By induction, exten this to \(H^{i}(M)\) for \(2 \leq i\).
+
+			Finally, we will show that \(H^{2}(I_{K},M)\) is zero 
+			for a finite torsion module \(M\) :
+			Without loss of generality, (by Chinese Remainer Theorem)
+			assume that \(M\) is \(l^{\infty}\)-torsion for some prime 
+			\(l\).
+			Then, by Sriram's corollary 1.2 and taking limits by
+			Corollary \ref{cor:lim:cohom}, we have that the restriction
+			map \(res : H^{2}(I_{K},M) \to H^{2}(\Syl_{l}(I_{K}),M)\),
+			where \(\Syl_{l}(I_{K})\) is (any) pro-\(l\) Sylow Subgroup,
+			is injective. 
+			Thus it suffices to show for \(\Syl_{l}\left( I_{K} \right)\).
+			By induction on the size of \(M\), we reduce to the case of
+			\(M = \mu_{l}\).
+			(every minimal, thus indecomposable, module of 
+			\(\Syl_{l}(I_{K})\) must be isomorphic to
+			\(\mathbb{Z} / l\mathbb{Z} \isom \mu_{l}\))
+
+			But now, we notice that \(\Syl_{l}(I_{K})\) is the intersection
+			of the open subgroups containing it (the colimit). 
+			This will give us that
+			\[
+				H^{2}(\Syl_{l}(I_{K}),\mu_{l}) = 
+				\colim H^{2}\left( I_{L},\mu_{l} \right)
+			\] 
+			where the colimit is over finite extensions \(L / K\) where
+			\(l \nmid e_{L / K}\).
+			As the \(l\) does not divide the ramification index, every
+			element of \(I_{K}\) has order coprime to \(l\), giving us that 
+			the group is zero.
+
+		\item
+			We will use spectral sequences to calculate the cohomology
+			of \(G_{K}\). 
+			Our spectral sequence in this context will always "come from"
+			a "composition of operations".
+			Precisely this means a composition of \textit{derived functors},
+			or functors in the \textit{derived category}, but we do
+			not want to bother developing this (quite technical)
+			machinery, so we will limit ourselves to the following situation.
+
+			When we have an exact sequence of groups
+			\[
+			1 \to H \to G_{K} \to G_{K} / H \to 1	
+			,\] 
+			then we can notice that if we take the invariants of \(H\), and
+			then take the invariants of \(G_{K} / H\), we will get
+			the invariants of \(G\), by straightforward application of
+			the definitions of invariants.
+
+			This ``composition'', i.e. first taking one invariants and 
+			then the other, will give us a spectral sequence.
+			We will use two such exact sequences:
+			\begin{enumerate}[(1)]
+				\item \(1 \to I_{K} \to G_{K} \to \Gal(K^{unr} / K) \to 1\) 
+				\item \(1 \to G_{L} \to G_{K} \to \Gal\left( L / K \right) \to 1\) 
+
+					for a finite \(L / K\).
+			\end{enumerate}
+					
+			First, we use the spectral sequence we get from (1), which
+			gives 
+			\[
+				H^{i}\left( \Gal(K^{unr} / K), 
+				H^{j}\left( I_{K}, M \right)\right) 
+				\implies H^{i + j}\left( G_{K},M \right)
+			.\] 
+			By our previous statement, the inside term vanishes when
+			\(2 \leq j\), and will always be torsion.
+			Remember that \(M\) is finite, and thus torsion.
+			For \(2 \leq i\), we can take our coefficients mod torsion,
+			so these will also be zero. % check why
+			% I think the K^unr / K has to have index prime
+			% to the torsion
+			We now have in our spectral sequence grid picture that 
+			each of the grid points is zero except for 
+			(0,0),(0,1),(1,0), and (1,1).
+			It is then straightforward to see that \(H^{3}\) and above
+			will vanish.
+
+			Now, for finiteness, consider the other sequence
+			\[
+				H^{i}\left( \Gal\left( L / K \right),
+				H^{j}\left( G_{L},M \right)\right)
+				\implies H^{i+j}\left( G_{K},M \right)
+			.\] 
+			We have that \(\Gal\left( L / K \right)\) is clearly finite,
+			and we will show that \(H^{j}\left( G_{L},M \right)\) is
+			finite for a specific choice of \(L\).
+			Then, all of the grid points on the spectral sequence will
+			be finite, and thus termination in finite steps will give 
+			finiteness.
+
+			So, choose \(L\) such that the action of \(G_{L}\) on \(M\) 
+			is trivial, as is that of \(G_{L}\) on \(\mu_{\left| M \right|}\).
+			By our choice of \(L\), \(M\) is isomorphic (as a
+			\(G_{L}\)-module) to a direct sum of \(\mu_{n_{i}}\) for 
+			some \(n_{i}\)'s.
+			By the fact that direct sums are colimits, we can use
+			our favorite Corollary \ref{cor:lim:cohom} to split
+			the computation up for a single \(\mu_{n}\).
+
+			For \(j=0\), the module is clearly finite (we are taking
+			invariants of a finite module).
+			For \(j=1\), we have the short exact sequence
+			\[
+			1 \to \mu_{n} \to \overline{L}^{\cross} \to 
+			\overline{L}^{\cross} \to 1
+			\] 
+			and Hibert Theorem 90.
+			For \(j = 2\), we have that same sequence and the 
+			computation of the Brauer group.
+			For \(2 \leq j\), the cohomology group vanishes, 
+			as above.
+
+	\end{enumerate}
+\end{proof}
+
+-----
+
+We will now state the local duality theorem. 
+This will have the reciprocity law as a consequence.
+
+\begin{defn}
+	If \(M\) is a finite \(G_{K}\)-module, then \(M^{\star} :=
+	\Hom_{} (M,\mu_{\infty})\) is the \textit{Tate dual} of \(M\).
+\end{defn}
+
+Our action as a \(G_{K}\)-module is not exactly what you would expect.
+We have  \((g \cdot \phi)(m) = g \cdot \phi(g^{-1} m)\) for \(g \in G_{K}\),
+\(\phi \in M^{*}\), \(m \in M\).
+Note that there is an ``extra'' action of \(g\) in our construction,
+unlike (for example) the construction of the opposite group action.
+
+This gives us a \(G_{K}\)-equivariant map  
+\[
+\Phi : M \otimes M^{\star} \to \mu_{\infty}
+\] 
+(find the map from the product, it is \(\mathbb{Z}\)-bilinear).
+Now, the cup product gives us a map
+\[
+	H^{i}(G_{K},M) \times H^{2-i}(G_{K},M^{\star})
+	\to H^{2}(G_{K}, M \otimes_{Z} M^{\star})
+	\to H^{2}(G_{K}, \mu_{\infty})
+	\isom \mathbb{Q} / \mathbb{Z}
+\] 
+Where the map in the middle is by \(\Phi\).
+The composition of these is called the \textit{duality map}, and it is 
+denoted \(\left<\cdot,\cdot \right>_{K}\).
+
+Now, our big duality theorem
+
+\begin{thm}
+	\(\left<\cdot,\cdot\right>_{K}\) is a perfect pairing.
+\end{thm}
+
+This means that 
+\[
+	H^{i}(G_{K},M) \isom \Hom_{} (H^{2-i}(G_{K},M^{\star},\mathbb{Q} / \mathbb{Z})
+\] 
+and vice versa.
+We want to think of the RHS as the dual of the LHS, but note that it 
+is not the same as the duality pairing from above. 
+
+
+
+
+\end{document}

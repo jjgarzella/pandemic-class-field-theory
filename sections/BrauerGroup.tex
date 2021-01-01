@@ -1,0 +1,326 @@
+\documentclass[class=article, crop=false]{standalone}
+\usepackage{blindtext}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,tikz-cd,mathtools}
+\usepackage[utf8]{inputenc}
+\usetikzlibrary{arrows}
+\tikzset{commutative diagrams/.cd,arrow style=tikz,diagrams={>=latex'}}
+\usepackage[shortlabels]{enumitem}
+\setlength\parindent{0pt}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\Nat}{\operatorname{Nat}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\res}{\operatorname{res}}
+\newcommand{\cor}{\operatorname{cor}}
+\newcommand{\inv}{\operatorname{inv}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\ev}{\operatorname{ev}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\Br}{\operatorname{Br}}
+\newcommand{\C}{\operatorname{C}}
+\newcommand{\B}{\mathrm{B}}
+\newcommand{\Nm}{\mathrm{Nm}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\frakm}{\mathfrak{m}}
+\newcommand{\frakn}{\mathfrak{n}}
+\newcommand{\fraka}{\mathfrak{a}}
+\newcommand{\frakb}{\mathfrak{b}}
+\newcommand{\frakc}{\mathfrak{c}}
+\newcommand{\frakp}{\mathfrak{p}}
+\newcommand{\frakq}{\mathfrak{q}}
+\newcommand{\frakP}{\mathfrak{P}}
+\newcommand{\frakO}{\mathfrak{O}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+
+\begin{document}
+\section{Functorial Properties of Cohomology}
+Let $M$ be a $G$-module and $M'$ a $G'$-module. Two maps $\alpha:G'\to G$ and $\beta:M\to M'$ are \textbf{compatible} if $\beta(\alpha(g)m)=g(\beta(m))$. If $(\alpha,\beta)$ is a compatible pair, then $(\alpha,\beta)$ defines a homomorphism of complexes
+\begin{align*}
+	C^{r}(G,M)&\to C^{r}(G',M')\\
+	\phi&\mapsto\beta\circ\phi\circ\alpha^{r}
+.\end{align*}
+One can check this by chasing the following diagram:
+\[
+\begin{tikzcd}
+	\cdots\ar{r}{d^{r-1}} & C^{r}(G,M)\ar{r}{d^{r}}\ar[d] & C^{r+1}(G,M)\ar{r}{d^{r+1}}\ar[d] & \cdots\\
+	\cdots\ar{r}{d^{r-1}} & C^{r}(G',M')\ar{r}{d^{r}} & C^{r+1}(G',M')\ar{r}{d^{r+1}} & \cdots\\
+\end{tikzcd}
+.\]
+The homomorphism of complexes induces a homomorphism on cohomology
+\[
+	H^{r}(G,M)\to H^{r}(G',M')
+.\]
+\begin{example}
+Let $H$ be a subgroup of $G$. For any $H$-module $M$, the map
+\begin{align*}
+	\Ind^{G}_H(M)&\to M\\
+	\phi&\mapsto \phi(1_G)
+\end{align*}
+is compatible with the inclusion map $H\hookrightarrow G$. The induced homomorphism
+\[
+	H^{r}(G,\Ind^{G}_H(M))\to H^{r}(H,M)
+\] 
+is exactly the isomorphism from Shapiro's lemma.
+\end{example}
+\subsection{Restriction} 
+Let $H$ be a subgroup of $G$. Let $\alpha:H\hookrightarrow G$ be the inclusion map and $\beta:M\to M$ be the identity map. Fix $g\in G$, $m\in M$. Since $\beta(\alpha(h)m)=hm=h\beta(m)$, $\alpha$ and $\beta$ are compatible. The induced maps on cohomology are called \textbf{restriction homomorphisms}:
+\[
+	\res:H^{r}(G,M)\to H^{r}(H,M)
+.\] 
+Alternatively, $\res$ can be realized as the composition
+\[
+	H^{r}(G,M)\to H^{r}(G,\Ind^{G}_H(M))\xrightarrow{\overset{\text{Shapiro}}{\simeq}} H^{r}(H,M)
+\] 
+where the first map is induced by  
+\begin{align*}
+	M&\to\Ind^{G}_H(M)\\
+	m&\mapsto (g\mapsto gm)
+\end{align*}
+and the second is the isomorphism from Shapiro's lemma.
+\subsection{Inflation}
+Let $H$ be a normal subgroup of $G$. Let $\alpha:G\to G/H$ be the quotient map, and $\beta:M^{H}\hookrightarrow M$ the inlcusion map. Fix $g\in G$, $m\in M^{H}$. Then 
+\begin{align*}
+	\beta(\alpha(g)m)&=\beta((gH)m)\\
+			 &=\beta(g(Hm))\\
+			 &=\beta(gm)\\
+			 &=gm\\
+			 &=g\beta(m)
+.\end{align*}
+The induced maps on cohomology in this case are called \textbf{inflation homomorphisms}:
+\[
+	\inf:H^{r}(G/H,M^{H})\to H^{r}(G,M)
+.\] 
+\subsection{Corestriction}
+Let $H$ be a subgroup of $G$ of finite index $n$. Let $\left\lbrace s_1,\dots, s_n\right\rbrace$ be a set of left coset representatives for $H$ in $G$ so that $G$ decomposes as
+\[
+	G=\bigcup\limits_{i=1}^{n}s_iH
+.\] 
+Let $M$ be a $G$-module. Consider the norm map  
+\begin{align*}
+	\Nm_{G/H}:M^{H}&\to M\\
+	m&\mapsto\sum\limits_{i=1}^{n}s_im
+.\end{align*}
+Suppose $\left\lbrace s_1',\dots, s_n'\right\rbrace$ is another set of coset representatives for $H$ in $G$. For $m\in M^{H}$,
+\begin{align*}
+	\sum\limits_{i=1}^{n}s_im&=\sum\limits_{i=1}^{n}s_i's_i'^{-1}(s_im)\\
+				 &=\sum\limits_{i=1}^{n}s_i'(s_i'^{-1}s_i)m\\
+				 &=\sum\limits_{i=1}^{n}s_i'm
+,\end{align*}
+so $\Nm_{G/H}$ is independent of choice of coset representatives. Furthermore, for $g\in G$, $\left\lbrace gs_1,\dots, gs_n\right\rbrace$ is again a set of coset representatives. Therefore the norm map is in fact a well-defined homomorphism
+\begin{align*}
+	\Nm_{G/H}:M^{H}\to M^{G}
+.\end{align*}
+This can be extended ($M^{\bullet}=H^{0}(\bullet,M)$) to \textbf{corestriction homomorphisms}
+\[
+	\cor:H^{r}(H,M)\to H^{r}(G,M)
+\] 
+for all $r$ in the following way: for every $G$-module $M$, there is a canonical $G$-module homomorphism
+\begin{align*}
+	\Ind^{G}_H(M)&\to M\\
+	\phi&\mapsto\sum\limits_{i=1}^{n}s_i\phi(s_i^{-1})
+.\end{align*}
+The induced map on cohomology, when composed with the isomorphism from Shapiro's lemma, gives $\cor$:
+\[
+	H^{r}(H,M)\xrightarrow{\simeq}H^{r}(G,\Ind^{G}_H(M))\to H^{r}(G,M)
+.\] 
+\subsection{Some Auxiliary Results}
+\begin{proposition}
+	For $H$ a subgroup of $G$ of finite index, the composition
+	\[
+		\cor\circ\res:H^{r}(G,M)\to H^{r}(G,M)
+	\] 
+	is the multiplication by $[G:H]$ homomorphism.
+\end{proposition}
+\begin{proof}
+	For each $m\in M$, define
+	\begin{align*}
+		\phi_m:G&\to M\\
+		g&\mapsto gm
+	.\end{align*}
+	Let $S$ be a set of coset representatives for $H$ in $G$, and define
+	\begin{align*}
+		\psi:\Ind^{G}_H(M)&\to M\\
+		\phi&\mapsto\sum\limits_{s\in S}s\phi(s^{-1})
+	.\end{align*}
+	By the definitions of $\res$ and $\cor$, the composite
+	\begin{align*}
+		M\xrightarrow{m\mapsto\phi_m}\Ind^{G}_H(M)\xrightarrow{\psi}M
+	\end{align*}
+	induces exactly the composite $\cor\circ\res$ on cohomology. The result follows since
+	\[
+		\sum\limits_{s\in S}s\phi_m(s^{-1})=\sum\limits_{s\in S}ss^{-1}m=\sum\limits_{s\in S}m=[G:H]m
+	.\] 
+\end{proof}
+\begin{corollary}\label{cor:mult-triv}
+	If $\#G=m$, then $mH^{r}(G,M)=0$ for all $r>0$.
+\end{corollary}
+\begin{proof}
+	By the proposition, the multiplication by $m=[G:\left\lbrace 1\right\rbrace]$ map factors through $H^{r}(\left\lbrace 1\right\rbrace,M)=0$ like so
+	\[
+		H^{r}(G,M)\xrightarrow{\res}H^{r}(\left\lbrace 1\right\rbrace,M)\xrightarrow{\cor} H^{r}(G,M)
+	.\] 
+\end{proof}
+Let $A$ be an abelian group, $p$ a prime. The subgroup
+\[
+	A(p)=\left\lbrace g\in A:p^{k}g=0 \text{ for some }k\in\ZZ\right\rbrace
+.\] 
+\begin{corollary}
+	Let $G$ be a finite group, $G_p$ its $p$-Sylow subgroup. For every $G$-module $M$, the restriction map
+	\[
+		\res:H^{r}(G,M)\to H^{r}(G_p,M)
+	\] 
+	is injective on the $p$-primary component of $H^{r}(G,M)$.
+\end{corollary}
+\begin{proof}
+	The composite
+	\[
+		\cor\circ\res:H^{r}(G,M)\to H^{r}(G,M)
+	\] 
+	is multiplication by $[G:G_p]$, which is not divisible by $p$. It follows then that $\cor\circ\res$ is injective on the $p$-primary component of $H^{r}(G,M)$, so in particular $\res$ is.
+\end{proof}
+\section{The Brauer Group of a Local Field}
+The main result is:
+\begin{theorem}
+	Let $K/\QQ_p$ be a finite extension. There is a canonical (once we choose a geometric or arithmetic Frobenius) isomorphism
+	\[
+		\inv_K:\Br(K)\to\QQ/\ZZ
+	\] 
+	such that for $L/K$ a finite extension, the diagram
+	\[
+	\begin{tikzcd}[row sep=3em, column sep=3em]
+		\Br(L)\ar[r,shift left,"\res"]\ar[d,swap,"\inv_L", "\simeq"'] & \Br(K)\ar[l,shift left,"\cor"]\ar[d,"\inv_K","\simeq"']\\
+		\QQ/\ZZ\ar[r,shift left,"id"] & \QQ/\ZZ\ar[l,shift left,"{[L:K]}"]
+	\end{tikzcd}
+	\] 
+	commutes. Here $\Br(K)=H^{2}(G_K,\overline{K}^{\times})$ is the (cohomological) Brauer group.
+\end{theorem}
+Hilbert Theorem 90 gives $H^{1}(G_L,\overline{L}^{\times})=\left\lbrace1\right\rbrace$, so we can use dimension shifting or the Hochschild-Serre spectral sequence to extend the inflation-restriction exact sequence. This combined with the theorem gives
+\[
+\begin{tikzcd}
+	0\ar[r] & H^{2}(G(L/K),\overline{L}^{\times})\ar[r] & H^{2}(G_K,\overline{K}^{\times})\ar{r}{\res}\ar[d,"\inv_K"',"\simeq"] & H^{2}(G_L,\overline{L}^{\times})\ar[d,"\inv_L","\simeq"']\\
+		& & \QQ/\ZZ\ar{r}[swap]{[L:K]} & \QQ/\ZZ
+\end{tikzcd}
+.\] 
+There is therefore an isomorphism $H^{2}(\Gal(L/K),\overline{L}^{\times})\simeq\frac{1}{[L:K]}\ZZ/\ZZ$.\\
+\subsection{The Unramified Case}
+$\inv_K$ is constructed in the following way:
+\[
+	\begin{tikzcd}[column sep=1em]
+		H^{2}(G_K,\overline{K}^{\times})\ar[rr,dashed,"\inv_K"] & & \QQ/\ZZ &[-1.5em] \ni &[-1.5em] \phi(\Frob_K)\\
+		H^{2}(G(K^{ur}/K),(K^{ur})^{\times})\ar[r,"\ord"',"\simeq"]\ar[u,"\inf","\simeq"'] & H^{2}(G(K^{ur}/K,\ZZ)\ar[r,"\delta"',"\simeq"] & H^{1}(G(K^{ur}/K),\QQ/\ZZ)\ar[u,"\ev"',"\simeq"] &[-1.5em] \ni &[-1.5em] \phi\ar[u,mapsto] 
+\end{tikzcd}
+\] 
+where $\Frob_K$ is either a geometric or arithmetic Frobenius element for $K^{ur}/K$.
+\begin{proposition}
+	In the diagram, $\ord$, $\delta$, and $\ev$ are isomorphisms.
+\end{proposition}
+\begin{proof}
+	The action of $G(K^{ur}/K)$ on $\QQ/\ZZ$ is trivial, so
+	\[
+	H^{1}(G(K^{ur}/K),\QQ/\ZZ)\simeq\Hom(G(K^{ur}/K),\QQ/\ZZ)
+	.\] 
+	Since $G(K^{ur}/K)$ is generated by $\Frob_K$, a map from $G(K^{ur}/K)$ is determined entirely by what it does to $\Frob_K$. The map $\left[\frac{a}{b}\right]\mapsto(\Frob_K\mapsto\left[\frac{a}{b}\right])$ is clearly an inverse to $\ev$.\\
+	Since $G(K^{ur}/K)$ is profinite and $\QQ$ is discrete,
+	\[
+		H^{r}(G(K^{ur}/K),\QQ)\simeq\varinjlim_{\stackrel{H\le G(K^{ur}/K)}{\text{ open normal}}}H^{r}(G(K^{ur}/K)/H,\QQ^{H})
+	.\] 
+	As $G(K^{ur}/K)/H$ is finite, $mH^{r}(G(K^{ur}/K)/H,\QQ^{H})=0$ where
+	\[
+	m=[G(K^{ur}/K):H]
+	.\] 
+	Therefore, $H^{r}(G(K^{ur}/K)/H,\QQ^{H})$ is torsion. The direct limit of torsion groups is torsion, so $H^{r}(G(K^{ur}/K),\QQ)$ is also torsion. On the other hand, since $\QQ$ is uniquely divisible, the multiplication by $m$ map $[m]$ induces an isomorphism
+	\[
+		H^{r}(G(K^{ur}/K),\QQ)\xrightarrow{[m]}H^{r}(G(K^{ur}/K),\QQ)
+	\] 
+	for any $m\ne 0$. In particular, the multiplication by $\exp(H^{r}(G(K^{ur}/K),\QQ))$  map is an isomorphism, so $H^{r}(G(K^{ur}/K),\QQ)=0$. The long exact sequence on cohomology induced by the short exact sequence
+	\[
+		0\to\ZZ\to\QQ\to\QQ/\ZZ\to 0
+	\] 
+	can then be boiled down to an isomorphism
+	\[
+		\delta:H^{1}(G(K^{ur}/K),\QQ/\ZZ)\xrightarrow{\simeq}H^{2}(G(K^{ur}/K),\ZZ)
+	.\] 
+	There is a short exact sequence
+	\[
+		0\to\mathcal{O}_{K^{ur}}^{\times}\to(K^{ur})^{\times}\xrightarrow{\ord}\ZZ\to 0
+	.\] 
+	The goal is to show that $H^{r}(G(K^{ur}/K),\mathcal{O}_{K^{ur}}^{\times})=0$ for $r=2,3$, so that the induced long exact sequence on cohomology gives the desired $\ord$ isomorphism. Since
+	\[
+		H^{r}(G(K^{ur}/K),\mathcal{O}_{K^{ur}}^{\times})=\varinjlim_{\stackrel{L/K}{\text{unr., finite}}}H^{r}(G(L/K),\mathcal{O}_L^{\times})
+	\] 
+	and $G(L/K)$ is cyclic, it suffices to prove that $H^{r}(G(L/K),\mathcal{O}_L^{\times})=0$ for $r=1,2$.\\
+	There is a Galois module decomposition $L^{\times}=\mathcal{O}_L^{\times}\times\varpi^{\ZZ}$, and since $L/K$ is unramified, $G(L/K)$ acts trivially on $\pi^{\ZZ}$. So,
+	\[
+		H^{r}(G(L/K),L^{\times}))\simeq H^{r}(G(L/K),\mathcal{O}_L^{\times})\oplus H^{r}(G(L/K),\ZZ)
+	.\] 
+	By Hilbert theorem 90, $H^{1}(G(L/K),\mathcal{O}_L^{\times})=0$, so the $r=1$ case is done.\\
+	For $r=2$, the cohomology theory of cyclic groups gives
+	\[
+		H^{2}(G(L/K),\mathcal{O}_L^{\times})\simeq\frac{\ker(\sigma-1)}{\im(\Nm)}
+	.\] 
+	Since $\Nm_{L/K}:\mathcal{O}_L^{\times}\to\mathcal{O}_K^{\times}$ is surjective (equivalence of categories, reduce to finite field case), this takes care of the $r=2$ case and $\ord$ is subsequently an isomorphism.
+\end{proof}
+It remains to check compatibility with restriction.
+\begin{proposition}
+	Let $L/K$ be an extension of finite degree. Then the diagram
+	\[
+	\begin{tikzcd}
+		H^{2}(G(K^{ur}/K),(K^{ur})^{\times})\ar{r}{\res}\ar[d,"\inv_K"',"\simeq"] & H^{2}(G(L^{ur}/L),(L^{ur})^{\times})\ar[d,"\inv_L","\simeq"']\\
+		\QQ/\ZZ\ar{r}{[L:K]} & \QQ/\ZZ
+	\end{tikzcd}
+	\] 
+	commutes.
+\end{proposition}
+\begin{proof}
+	The given diagram breaks into three squares:
+	\[
+	\begin{tikzcd}[column sep=1em]
+		&&\phi\ar[r,mapsto] & \phi(\Frob_K)\\[-25pt]
+		H^2(G(K^{ur}/K),(K^{ur})^{\times})\ar[r,"\ord_K","\simeq"']\ar[d,"\res"] & H^2(G(K^{ur}/K),\ZZ)\ar[d,"e_{L/K}\cdot\res"] & H^{1}(G(K^{ur}/K),\QQ/\ZZ)\ar[l,"\simeq"]\ar[d,"e_{L/K}\cdot\res"]\ar[r,"\simeq"]& \QQ/\ZZ\ar[d,"f_{L/K}\cdot e_{L/K}"]\\
+		H^{2}(G(L^{ur}/L),(L^{ur})^{\times})\ar[r,"\ord_L","\simeq"'] & H^2(G(L^{ur}/L),\ZZ) & H^{1}(G(L^{ur}/L),\QQ/\ZZ)\ar[l,"\simeq"']\ar[r,"\simeq"]\ar[r,"\simeq"] & \QQ/\ZZ\\[-25pt]
+		&&\phi\ar[r,mapsto] & \phi(\Frob_K)
+	\end{tikzcd}
+	\] 
+	The result follows since $[L:K]=e_{L/K}\cdot f_{L/K}$.
+\end{proof}
+Finally,
+\begin{corollary}
+	The diagram
+	\[
+	\begin{tikzcd}
+		H^{2}(G(K^{ur}/K),(K^{ur})^{\times})\ar[d,"\inv_K"',"\simeq"] & H^{2}(G(L^{ur}/L),(L^{ur})^{\times})\ar[l,"\cor"]\ar[d,"\inv_L","\simeq"']\\
+		\QQ/\ZZ & \QQ/\ZZ\ar[l,"id"]
+	\end{tikzcd}
+	\] 
+	also commutes.
+\end{corollary}
+\begin{proof}
+	Since $\inv_L\circ\res=[L:K]\circ\inv_K$ and $\inv_L$, $\inv_K$ are isomorphisms,
+	\[
+		id\circ\inv_L\circ\res=id\circ[L:K]=[L:K]
+	.\] 
+	As $\res$ is surjective and $\cor\circ\res=[L:K]$, the diagram commutes.
+\end{proof}
+\end{document}
+

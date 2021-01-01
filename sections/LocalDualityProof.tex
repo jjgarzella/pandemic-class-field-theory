@@ -1,0 +1,131 @@
+\documentclass[class=article, crop=false]{standalone}
+\usepackage[utf8]{inputenc}
+
+\newcommand{\xdownarrow}[1]{%
+  {\left\downarrow\vbox to #1{}\right.\kern-\nulldelimiterspace}
+}
+\usepackage{latexsym}
+  \usepackage{comment}
+  \usepackage{showlabels}
+  \usepackage{amsmath,amsthm,amsfonts,amssymb,graphicx,epsfig,latexsym,color,amssymb}
+  %\usepackage{showkeys}
+  \usepackage{epsf}
+  \usepackage{enumitem}
+  \usepackage{tikz}
+  \usepackage{tikz-cd}
+  \def\rank{\operatorname{rank}}
+
+\newcommand{\bbfamily}{\fontencoding{U}\fontfamily{bbold}\selectfont}
+\DeclareMathAlphabet{\mathbbold}{U}{bbold}{m}{n}
+\begin{document}
+\begin{center}
+    Proof of Local Tate Duality
+\end{center}
+Fix $K/\mathbb{Q}_p$ a finite extension. Let $M$ be a $G_K$-module. 
+\vskip 5pt
+\textbf{Definition}: We let $M^* = \text{Hom}(M, \mu_{\infty})$ denote the \textit{Tate Dual} of $M$. 
+\vskip 5pt 
+Let $\phi \in M^*$, $g\in G_K$. We define $(g\phi)(m)=g\phi(g^{-1}m)$. 
+\vskip 5pt 
+\textbf{Example}: $M=\mathbb{Z}/n$ with trivial $G_K$ action gives $M^*\cong \mu_{n}\subset \overline{K}$. Essentially the Tate Dual in this case equips $\mathbb{Z}/n$ with some natural $G_K$ action.
+\vskip 5pt
+We obtain a $G_K$ equivariant pairing
+\[M\times M^* \to \mu_{\infty}\]
+\[(m, \phi) \mapsto \phi(m)\]
+This induces the \textit{duality map}
+
+\begin{tikzcd}
+{\langle \cdot, \cdot \rangle_K:H^i(G_K,M)\times H^{2-i}(G_K,M^*)} \arrow[r, "\cup"] \arrow[rrd, "{\langle \cdot, \cdot \rangle_K}"'] & {H^2(G_K, M \otimes_{\mathbb{Z}}M^*)} \arrow[r] & {H^2(G_K,\mu_{\infty})} \arrow[d, "inv_K", "\sim"'] \\
+                                                                                                                                      &                                                 & \mathbb{Q}/\mathbb{Z}      
+\end{tikzcd}
+
+\textbf{Theorem}: Suppose $|M|<\infty$. $\langle \cdot, \cdot \rangle_K$ is a perfect pairing for $i=0,1,2$. 
+\vskip 3pt That is, it induces isomorphisms \[H^i(G_K,M) \to H^{2-i}(G_K, M^{*})^{\vee}, \quad  H^{2-i}(G_K,M^{*}) \to H^i(G_K, M)^{\vee},\]
+with $D^{\vee} = \text{Hom}(D, \mathbb{Q}/\mathbb{Z})$, homomorphisms in Ab.
+\vskip 5pt
+The proof will be in two parts, when $i=2$ and when $i=1$. $i=0$ follows from $i=2$ and the symmetry of the pairing (just dualize the isomorphisms). The $i=1$ will utilize the $i=2$ case and dimension shifting, so we prove $i=2$ first.
+
+\begin{proof}
+$(i=2)$. We have $H^0(K,M^*)=(M^*)^{G_K}=\text{Hom}_{G_K}(M, \mu_{\infty})$, for if $\phi \in (M^*)^{G_K}$, then $\phi(gm)=(g\phi)(gm)=g\phi(g^{-1}gm)=g\phi(m)$. The other direction is similar.
+\par 
+$\phi \in \text{Hom}_{G_K}(M,\mu_{\infty})$ induces a map $H^2(G_K,M) \to H^2(G_K,\mu_{\infty})$ by evaluation, which we also denote by $\phi$. The duality map then identifies to
+\[\Theta_K:\text{Hom}_{G_K}(M, \mu_{\infty}) \to H^2(G_K,M)^{\vee}\]
+\[\phi \mapsto \text{inv}_K\circ \phi :H^2(G_K,M)\to \mathbb{Q}/\mathbb{Z}\]
+Our goal is to show $\Theta_K$ is an isomorphism. To do this, we will use a similar trick to JJ's spectral sequence argument. We will take a cleverly chosen finite extension $L/K$ so that $L$ is "simple". First we want to know that understanding the corresponding $\Theta_L$ maps gives us information about $\Theta_K$. This is contained in the following two claims:
+\vskip 5pt
+\textbf{Claim 1}: The following diagram commutes.
+\[\begin{tikzcd}
+{Hom_{G_K}(M,\mu_{\infty})} \arrow[r, "\Theta_K"] \arrow[d, hook] & {H^2(G_K, M)^{\vee}} \arrow[d, "cor^{\vee}", dashed] \\
+{Hom_{G_L}(M,\mu_{\infty})} \arrow[r, "\Theta_L"]                 & {H^2(G_L,M)^{\vee}}                                 
+\end{tikzcd}\]
+\textit{Proof of claim}: We have the following commutative diagram
+\[\begin{tikzcd}
+{H^2(G_L,M) } \arrow[rrd, "\varphi"] \arrow[r, "cor"] & {H^2(G_K,M)} \arrow[r, "\varphi"] & {H^2(G_K,\mu_{\infty})} \arrow[r, "Inv_K"]                    & \mathbb{Q}/\mathbb{Z}                             \\
+                                                      &                                   & {H^2(G_L,\mu_{\infty})} \arrow[r, "Inv_L"] \arrow[u, "cor"] & \mathbb{Q}/\mathbb{Z} \arrow[u, "Id", Rightarrow]
+\end{tikzcd}\]
+The triangle on the left commutes because cor commutes with maps of Galois modules. The square on the right commutes by the final result of Sriram's talk.
+\par 
+\mbox{}\hfill \qedsymbol
+\\
+\textbf{Claim 2}: $\text{cor}^{\vee}$ is injective, and thus [$\Theta_L$ an isomorphism implies $\Theta_K$ an isomorphism]
+\\
+\textit{Proof of claim}: Let us first assume cor$^{\vee}$ is injective. Suppose $\Theta_L$ is an isomorphism. Since $\Theta_L$ is $G(L/K)$ equivariant (Seen by direct calculation by writing $G(L/K)=G_K/G_L$),
+\[\begin{tikzcd}
+{Hom_{G_K}(M,\mu_{\infty})=Hom_{G_L}(M,\mu_{\infty})^{G(L/K)}} \arrow[rd, "\Theta_K"'] \arrow[r, "\Theta_L"] & {(H^2(G_L,M)^{\vee}))^{G(L/K)}}                      \\
+                                                                                                                & {H^2(G_K,M)^{\vee}} \arrow[u, "cor^{\vee}"', hook]
+\end{tikzcd}\]
+is a commutative diagram by claim $1$. Thus since $\Theta_L$ is an isomorphism, so is $\Theta_K$.
+\vskip 3pt
+To show that cor$^{\vee}$ is injective, we show cor is surjective. Recall that cor is constructed so that, if $\Phi:H^2(G_K, \text{Ind}_{G_L}^{G_K}M) \to H^2(G_L,M)$ is the isomorphism given by Shapiro's lemma, then $tr:\text{Ind}_{G_L}^{G_K}M \to M = \text{cor}\circ \Phi$, with $tr(\phi) = \sum_{g\in G_K/G_L}g^{-1}\phi(g)$. One easily sees that tr is surjective, so since $H^3(G_K, \text{ker}(tr)) = 0$, the long exact sequence induced by tr implies that cor is surjective.
+\par 
+\mbox{}\hfill \qedsymbol
+\\
+Following the technique illustrated by JJ's talk, we choose $L/K$ finite so that $G_L$ acts on both $M$ and $\mu_{|M|}$ trivially. Thus $M$ as a $G_L$ module is a sum of $\mu_{n_i}$'s, so for our purposes we may assume $M=\mu_n$ for some $n$.
+\vskip 5pt
+The proof then follows by noting the obvious commutativity of the following diagram.
+\[\begin{tikzcd}
+(x\mapsto x^r)       & {Hom_{G_K}(\mu_n, \mu_{\infty})} \arrow[r, "\Theta_L"] & {H^2(G_K, \mu_n)^{\vee}}                                                                   \\
+r \arrow[u, maps to] & \mathbb{Z}/n \arrow[u, "\sim"] \arrow[r, "\sim"]       & {Hom((\frac{1}{n}\mathbb{Z})/\mathbb{Z}, \mathbb{Q}/\mathbb{Z})} \arrow[u, "inv_K^{\vee}"] \\
+                     & r \arrow[r, maps to]                                   & (\frac{1}{n} \mapsto \frac{r}{n})                                                         
+\end{tikzcd}\]
+$(i=1)$: We want to apply dimension shifting. The problem is, in dimension shifting we have to deal with a $G_K$ module which is not finite, so we won't be able to apply our $i=2/i=0$ cases.
+\vskip 5pt
+But the cohomology of $G_K$ with coefficients in Ind$_1^{G_K}M$ can naturally be written as the direct limit of the cohomology of $G_K$ with coefficients in finite submodules of Ind$_1^{G_K}M$. Thus $M$ must embed in some finite submodule $N$ of Ind$_1^{G_K}M$ such that $H^j(G_K,N)=0$ for $j\geq 1$.
+\vskip 5pt 
+Then we have the SES's
+\[0 \to M \to N \to Q \to 0\]
+\[0 \to Q^* \to N^* \to M^* \to 0\]
+And these show that
+\[H^0(G_K, N) \to H^0(G_K, Q) \to H^1(G_K, M) \to 0\]
+\[H^2(G_K,N^*)^{\vee} \to H^2(G_K,Q^*)^{\vee} \to H^1(G_K,M^*)^{\vee}\]
+are exact. 
+\vskip 5pt
+These give rise to the commutative diagram
+\[\begin{tikzcd}
+{H^0(G_K,N)} \arrow[r] \arrow[d, "\sim"'] & {H^0(G_K, Q)} \arrow[r] \arrow[d, "\sim"'] & {H^1(G_K,M)} \arrow[r] \arrow[d] & 0 \\
+{H^2(K, N^*)^{\vee}} \arrow[r]            & {H^2(G_K, Q^*)^{\vee}} \arrow[r]           & {H^1(G_K,M^*)^{\vee}}            &  
+\end{tikzcd}\]
+with exact rows. The left hand vertical arrows are isomorphisms by the $i=2/i=0$ cases of the theorem. 
+\vskip 5pt
+By a diagram chase, $H^1(G_K,M) \hookrightarrow H^1(G_K, M^*)^{\vee}$, and by symmetry $H^1(G_K, M^*) \hookrightarrow H^1(G_K, M)^{\vee}$ so 
+\begin{tikzcd} 
+H^1(G_K,M) \arrow[r, tail, twoheadrightarrow] & H^1(G_K,M^*)^{\vee}
+\end{tikzcd}
+Thus the finite groups have the same order, so the maps must be isomorphisms.
+\end{proof}
+
+Let us now establish a few functorial properties of the pairing.
+\vskip 5pt 
+\textbf{Theorem}: The duality map $\langle \cdot, \cdot \rangle_K: H^i(G_K,M)\times H^{2-i}(G_K,M^*) \to \mathbb{Q}/\mathbb{Z}$ satisfies the following properties:
+\begin{enumerate}
+    \item Given $L/K$ finite, $x\in H^i(G_K,M)$, $y\in H^{2-i}(G_L, M^*)$, we have $\langle x, \text{cor}(y)\rangle_K = \langle \text{res}(x), y\rangle_L$.
+    \item With the same notation as above, $\langle \text{res}(x), \text{res}(y)\rangle_L = [L:K]\langle x, y \rangle_K$.
+\end{enumerate}
+\begin{proof}
+\begin{enumerate}
+    \item We have \[\langle x, \text{cor}(y)\rangle_K = inv_K(x \cup \text{cor}(y)) = inv_K(\text{cor}(\text{res}(x)\cup y)) = inv_L(\text{res}(x)\cup y) = \langle \text{res}(x),y\rangle_L.\]
+    \item We have \[\langle \text{res}(x), \text{res}(y)\rangle= inv_L(\text{res}(x)\cup \text{res}(y)) = inv_L(\text{res}(x\cup y)) = [L:K]\langle x, y \rangle_K.\]
+\end{enumerate}
+The proofs for $\text{res}(x)\cup \text{res}(y) = \text{res}(x\cup y)$ and $x \cup \text{cor}(y) = \text{cor}(\text{res}(x)\cup y)$ are partially illustrated in "ATIYAH, M. F. AND WALL, C. T. C. 1967. Cohomology of groups, pp. 94–115. In Algebraic Number Theory (Proc. Instructional Conf., Brighton, 1965). Thompson, Washington, D.C." (Which I found on google scholar).
+\end{proof}
+\end{document}
