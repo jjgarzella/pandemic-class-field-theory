@@ -1,0 +1,2 @@
+# pandemic-class-field-theory
+This is a more polished writeup of a series of talks given in a digital reading course during the COVID-19 pandemic. The topic of the seminar was local class field theory. The proof deduces class field theory from Local Tate Duality, which is a group-cohomological analogue of Poincare duality. Talks and notes were given by myself, Sriram Gopalakrishnan, Brian Udall, and Wei Yao. Special thanks to Stefan Patrikis for leading the course, upon whose handwritten notes these are based. Also thanks to Richard Taylor for teaching Patrikis the material.
