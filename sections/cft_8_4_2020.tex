@@ -20,47 +20,25 @@
 %\usepackage{extarrows}
 %\usepackage{tikz,tikz-cd}
 
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{lem}[thm]{Lemma}
+%\newtheorem{thm}{Theorem}[section]
+%\newtheorem{lem}[thm]{Lemma}
 %\newtheorem{cor}[thm]{Corollary}
-\newtheorem{prop}[thm]{Proposition}
-\newtheorem{conj}[thm]{Conjecture}
+%\newtheorem{prop}[thm]{Proposition}
+%\newtheorem{conj}[thm]{Conjecture}
 
 %\theoremstyle{definition}
-\newtheorem{defn}[thm]{Definition}
-\newtheorem{ex}[thm]{Example}
-\newtheorem{xca}[thm]{Exercise}
+%\newtheorem{defn}[thm]{Definition}
+%\newtheorem{ex}[thm]{Example}
+%\newtheorem{xca}[thm]{Exercise}
 
 %\theoremstyle{remark}
-\newtheorem{rmk}[thm]{Remark}
+%\newtheorem{rmk}[thm]{Remark}
 
 \newcommand{\category}[1]{\textsf{#1}}
 
-% convenient renaming
-\newcommand{\isom}{\cong}
-\newcommand{\ins}{\subset}
-\newcommand{\dual}{\vee}
-\newcommand{\cross}{\times}
-
-% general text operators
-\newcommand{\Image}{\operatorname{Im}}
-\newcommand{\Coim}{\operatorname{Coim}}
-\newcommand{\Ker}{\operatorname{Ker}}
-\newcommand{\Coker}{\operatorname{Coker}}
-\newcommand{\colim}{\operatorname{colim}}
-
-% arrows
-\newcommand{\surj}{\twoheadrightarrow}
-\newcommand{\inj}{\xhookrightarrow{}}
-
-% context
-\newcommand{\basefield}{K}
-\newcommand{\basering}{R}
 
 % commalg specific?
 %\newcommand{\Hom}{\operatorname{Hom}}
-\newcommand{\Ext}{\operatorname{Ext}}
-\newcommand{\Tor}{\operatorname{Tor}}
 
 %\newcommand{\depth}{\operatorname{depth}}
 %\newcommand{\height}{\operatorname{height}}
@@ -69,10 +47,8 @@
 
 % algebraic geometry
 %\newcommand{\Spec}{\operatorname{Spec}}
-\newcommand{\Spa}{\operatorname{Spa}}
 
 % custom ops here
-\newcommand{\Syl}{\operatorname{Syl}}
 %\newcommand{\Gal}{\operatorname{Gal}}
 
 
@@ -107,32 +83,7 @@ Corollary 1 in Wei's talk
 	\end{enumerate}
 \end{corollary}
 
-We will state the following lemma without proof, it has been used before
-and it appears in Neukirch as Proposition 1.5.1
 
-\begin{lem}
-	% fix colim
-	If \(G = \lim_{i \in I} G_{i}\) and \(A = \colim_{i \in I} A_{i}\),
-	then we have 
-	\[
-		H^{n}(G,A) = \colim_{i \in I} H^{n}(G_{i},A_{i})
-	\] 
-	for all \(n\)
-\end{lem}
-
-By taking one either the \(G_{i}\) or the \(A_{i}\) to be identically
-\(G\) (resp. A), we get the following corollary:
-
-\begin{corollary}\label{cor:lim:cohom}
-	\begin{enumerate}[(a)]
-		\item If \(G = \lim G_{i}\), then 
-			\(H^{n}(G,A) = \colim H^{n}(G_{i},A)\) for a fixed \(A\).
-		\item IF \(A = \colim A_{i}\), then 
-			\(H^{n}(G,A) = \colim H^{n}(G,A_{i})\) for a fixed \(G\).
-	\end{enumerate}
-\end{corollary}
-
-It is this corollary that will be most useful to us.
 
 \begin{proof}
 	\begin{enumerate}[(1)]
@@ -331,10 +282,10 @@ It is this corollary that will be most useful to us.
 We will now state the local duality theorem. 
 This will have the reciprocity law as a consequence.
 
-\begin{defn}
+\begin{definition}
 	If \(M\) is a finite \(G_{K}\)-module, then \(M^{\star} :=
 	\Hom_{} (M,\mu_{\infty})\) is the \textit{Tate dual} of \(M\).
-\end{defn}
+\end{definition}
 
 Our action as a \(G_{K}\)-module is not exactly what you would expect.
 We have  \((g \cdot \phi)(m) = g \cdot \phi(g^{-1} m)\) for \(g \in G_{K}\),
@@ -360,9 +311,9 @@ denoted \(\left<\cdot,\cdot \right>_{K}\).
 
 Now, our big duality theorem
 
-\begin{thm}
+\begin{theorem}
 	\(\left<\cdot,\cdot\right>_{K}\) is a perfect pairing.
-\end{thm}
+\end{theorem}
 
 This means that 
 \[

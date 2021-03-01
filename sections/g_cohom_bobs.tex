@@ -1,0 +1,194 @@
+
+\section{Group Cohomology Bits and Bobs}
+
+Here, we collect a number of facts about group cohomology
+which we will use in our proofs. 
+
+These concepts are used often, and without spending much
+time at all on them, so they are included here for 
+reference.
+For the reader who is new to class field theory, 
+spending some time understanding each of these
+arguments in-depth might be helpful to following along later.
+
+\subsection{Some Lemmas}
+
+\subsubsection{Shapiro's Lemma}
+
+\subsubsection{Limits and Cohomology}
+
+We will state the following lemma without proof, it has been used before
+and it appears in Neukirch as Proposition 1.5.1
+
+\begin{lemma}
+	% fix colim
+	If \(G = \lim_{i \in I} G_{i}\) and \(A = \colim_{i \in I} A_{i}\),
+	then we have 
+	\[
+		H^{n}(G,A) = \colim_{i \in I} H^{n}(G_{i},A_{i})
+	\] 
+	for all \(n\)
+\end{lemma}
+
+By taking one either the \(G_{i}\) or the \(A_{i}\) to be identically
+\(G\) (resp. A), we get the following corollary:
+
+\begin{corollary}\label{cor:lim:cohom}
+	\begin{enumerate}[(a)]
+		\item If \(G = \lim G_{i}\), then 
+			\(H^{n}(G,A) = \colim H^{n}(G_{i},A)\) for a fixed \(A\).
+		\item IF \(A = \colim A_{i}\), then 
+			\(H^{n}(G,A) = \colim H^{n}(G,A_{i})\) for a fixed \(G\).
+	\end{enumerate}
+\end{corollary}
+
+It is this corollary that will be most useful to us later.
+
+\subsection{Functorial Properties of Cohomology}
+Let $M$ be a $G$-module and $M'$ a $G'$-module. Two maps $\alpha:G'\to G$ and $\beta:M\to M'$ are \textbf{compatible} if $\beta(\alpha(g)m)=g(\beta(m))$. If $(\alpha,\beta)$ is a compatible pair, then $(\alpha,\beta)$ defines a homomorphism of complexes
+\begin{align*}
+	C^{r}(G,M)&\to C^{r}(G',M')\\
+	\phi&\mapsto\beta\circ\phi\circ\alpha^{r}
+.\end{align*}
+One can check this by chasing the following diagram:
+\[
+\begin{tikzcd}
+	\cdots\ar{r}{d^{r-1}} & C^{r}(G,M)\ar{r}{d^{r}}\ar[d] & C^{r+1}(G,M)\ar{r}{d^{r+1}}\ar[d] & \cdots\\
+	\cdots\ar{r}{d^{r-1}} & C^{r}(G',M')\ar{r}{d^{r}} & C^{r+1}(G',M')\ar{r}{d^{r+1}} & \cdots\\
+\end{tikzcd}
+.\]
+The homomorphism of complexes induces a homomorphism on cohomology
+\[
+	H^{r}(G,M)\to H^{r}(G',M')
+.\]
+\begin{example}
+Let $H$ be a subgroup of $G$. For any $H$-module $M$, the map
+\begin{align*}
+	\Ind^{G}_H(M)&\to M\\
+	\phi&\mapsto \phi(1_G)
+\end{align*}
+is compatible with the inclusion map $H\hookrightarrow G$. The induced homomorphism
+\[
+	H^{r}(G,\Ind^{G}_H(M))\to H^{r}(H,M)
+\] 
+is exactly the isomorphism from Shapiro's lemma.
+\end{example}
+
+\subsubsection{Restriction} 
+
+Let $H$ be a subgroup of $G$. Let $\alpha:H\hookrightarrow G$ be the inclusion map and $\beta:M\to M$ be the identity map. Fix $g\in G$, $m\in M$. Since $\beta(\alpha(h)m)=hm=h\beta(m)$, $\alpha$ and $\beta$ are compatible. The induced maps on cohomology are called \textbf{restriction homomorphisms}:
+\[
+	\res:H^{r}(G,M)\to H^{r}(H,M)
+.\] 
+Alternatively, $\res$ can be realized as the composition
+\[
+	H^{r}(G,M)\to H^{r}(G,\Ind^{G}_H(M))\xrightarrow{\overset{\text{Shapiro}}{\simeq}} H^{r}(H,M)
+\] 
+where the first map is induced by  
+\begin{align*}
+	M&\to\Ind^{G}_H(M)\\
+	m&\mapsto (g\mapsto gm)
+\end{align*}
+and the second is the isomorphism from Shapiro's lemma.
+\subsubsection{Inflation}
+Let $H$ be a normal subgroup of $G$. Let $\alpha:G\to G/H$ be the quotient map, and $\beta:M^{H}\hookrightarrow M$ the inlcusion map. Fix $g\in G$, $m\in M^{H}$. Then 
+\begin{align*}
+	\beta(\alpha(g)m)&=\beta((gH)m)\\
+			 &=\beta(g(Hm))\\
+			 &=\beta(gm)\\
+			 &=gm\\
+			 &=g\beta(m)
+.\end{align*}
+The induced maps on cohomology in this case are called \textbf{inflation homomorphisms}:
+\[
+	\inf:H^{r}(G/H,M^{H})\to H^{r}(G,M)
+.\] 
+\subsubsection{Corestriction}
+Let $H$ be a subgroup of $G$ of finite index $n$. Let $\left\lbrace s_1,\dots, s_n\right\rbrace$ be a set of left coset representatives for $H$ in $G$ so that $G$ decomposes as
+\[
+	G=\bigcup\limits_{i=1}^{n}s_iH
+.\] 
+Let $M$ be a $G$-module. Consider the norm map  
+\begin{align*}
+	\Nm_{G/H}:M^{H}&\to M\\
+	m&\mapsto\sum\limits_{i=1}^{n}s_im
+.\end{align*}
+Suppose $\left\lbrace s_1',\dots, s_n'\right\rbrace$ is another set of coset representatives for $H$ in $G$. For $m\in M^{H}$,
+\begin{align*}
+	\sum\limits_{i=1}^{n}s_im&=\sum\limits_{i=1}^{n}s_i's_i'^{-1}(s_im)\\
+				 &=\sum\limits_{i=1}^{n}s_i'(s_i'^{-1}s_i)m\\
+				 &=\sum\limits_{i=1}^{n}s_i'm
+,\end{align*}
+so $\Nm_{G/H}$ is independent of choice of coset representatives. Furthermore, for $g\in G$, $\left\lbrace gs_1,\dots, gs_n\right\rbrace$ is again a set of coset representatives. Therefore the norm map is in fact a well-defined homomorphism
+\begin{align*}
+	\Nm_{G/H}:M^{H}\to M^{G}
+.\end{align*}
+This can be extended ($M^{\bullet}=H^{0}(\bullet,M)$) to \textbf{corestriction homomorphisms}
+\[
+	\cor:H^{r}(H,M)\to H^{r}(G,M)
+\] 
+for all $r$ in the following way: for every $G$-module $M$, there is a canonical $G$-module homomorphism
+\begin{align*}
+	\Ind^{G}_H(M)&\to M\\
+	\phi&\mapsto\sum\limits_{i=1}^{n}s_i\phi(s_i^{-1})
+.\end{align*}
+The induced map on cohomology, when composed with the isomorphism from Shapiro's lemma, gives $\cor$:
+\[
+	H^{r}(H,M)\xrightarrow{\simeq}H^{r}(G,\Ind^{G}_H(M))\to H^{r}(G,M)
+.\] 
+\subsubsection{Some Auxiliary Results}
+\begin{proposition}
+	For $H$ a subgroup of $G$ of finite index, the composition
+	\[
+		\cor\circ\res:H^{r}(G,M)\to H^{r}(G,M)
+	\] 
+	is the multiplication by $[G:H]$ homomorphism.
+\end{proposition}
+\begin{proof}
+	For each $m\in M$, define
+	\begin{align*}
+		\phi_m:G&\to M\\
+		g&\mapsto gm
+	.\end{align*}
+	Let $S$ be a set of coset representatives for $H$ in $G$, and define
+	\begin{align*}
+		\psi:\Ind^{G}_H(M)&\to M\\
+		\phi&\mapsto\sum\limits_{s\in S}s\phi(s^{-1})
+	.\end{align*}
+	By the definitions of $\res$ and $\cor$, the composite
+	\begin{align*}
+		M\xrightarrow{m\mapsto\phi_m}\Ind^{G}_H(M)\xrightarrow{\psi}M
+	\end{align*}
+	induces exactly the composite $\cor\circ\res$ on cohomology. The result follows since
+	\[
+		\sum\limits_{s\in S}s\phi_m(s^{-1})=\sum\limits_{s\in S}ss^{-1}m=\sum\limits_{s\in S}m=[G:H]m
+	.\] 
+\end{proof}
+\begin{corollary}\label{cor:mult-triv}
+	If $\#G=m$, then $mH^{r}(G,M)=0$ for all $r>0$.
+\end{corollary}
+\begin{proof}
+	By the proposition, the multiplication by $m=[G:\left\lbrace 1\right\rbrace]$ map factors through $H^{r}(\left\lbrace 1\right\rbrace,M)=0$ like so
+	\[
+		H^{r}(G,M)\xrightarrow{\res}H^{r}(\left\lbrace 1\right\rbrace,M)\xrightarrow{\cor} H^{r}(G,M)
+	.\] 
+\end{proof}
+Let $A$ be an abelian group, $p$ a prime. The subgroup
+\[
+	A(p)=\left\lbrace g\in A:p^{k}g=0 \text{ for some }k\in\ZZ\right\rbrace
+.\] 
+\begin{corollary}
+	Let $G$ be a finite group, $G_p$ its $p$-Sylow subgroup. For every $G$-module $M$, the restriction map
+	\[
+		\res:H^{r}(G,M)\to H^{r}(G_p,M)
+	\] 
+	is injective on the $p$-primary component of $H^{r}(G,M)$.
+\end{corollary}
+\begin{proof}
+	The composite
+	\[
+		\cor\circ\res:H^{r}(G,M)\to H^{r}(G,M)
+	\] 
+	is multiplication by $[G:G_p]$, which is not divisible by $p$. It follows then that $\cor\circ\res$ is injective on the $p$-primary component of $H^{r}(G,M)$, so in particular $\res$ is.
+\end{proof}
+

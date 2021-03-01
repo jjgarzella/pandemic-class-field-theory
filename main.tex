@@ -5,6 +5,86 @@
 \usepackage{import}
 \usepackage[all]{xy}
 
+\usepackage{blindtext}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,tikz-cd,mathtools}
+\usetikzlibrary{arrows}
+\tikzset{commutative diagrams/.cd,arrow style=tikz,diagrams={>=latex'}}
+\usepackage[shortlabels]{enumitem}
+\setlength\parindent{0pt}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\Nat}{\operatorname{Nat}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\res}{\operatorname{res}}
+\newcommand{\cor}{\operatorname{cor}}
+\newcommand{\inv}{\operatorname{inv}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\ev}{\operatorname{ev}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\Br}{\operatorname{Br}}
+\newcommand{\C}{\operatorname{C}}
+\newcommand{\B}{\mathrm{B}}
+\newcommand{\Nm}{\mathrm{Nm}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\frakm}{\mathfrak{m}}
+\newcommand{\frakn}{\mathfrak{n}}
+\newcommand{\fraka}{\mathfrak{a}}
+\newcommand{\frakb}{\mathfrak{b}}
+\newcommand{\frakc}{\mathfrak{c}}
+\newcommand{\frakp}{\mathfrak{p}}
+\newcommand{\frakq}{\mathfrak{q}}
+\newcommand{\frakP}{\mathfrak{P}}
+\newcommand{\frakO}{\mathfrak{O}}
+
+% convenient renaming
+\newcommand{\isom}{\cong}
+\newcommand{\ins}{\subset}
+\newcommand{\dual}{\vee}
+\newcommand{\cross}{\times}
+
+% general text operators
+\newcommand{\Image}{\operatorname{Im}}
+\newcommand{\Coim}{\operatorname{Coim}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\colim}{\operatorname{colim}}
+
+% arrows
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\inj}{\xhookrightarrow{}}
+
+% context 
+\newcommand{\basefield}{K}
+\newcommand{\basering}{R}
+
+% other
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\Spa}{\operatorname{Spa}}
+\newcommand{\Syl}{\operatorname{Syl}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+
 \title{Class Field Theory}
 \author{Brian, JJ, Sriram, Wei}
 \date{August 2020}
@@ -15,6 +95,7 @@
 
 \import{sections/}{outline}
 
+\import{sections/}{g_cohom_bobs}
 \import{sections/}{BrauerGroup}
 
 \import{sections/}{InvIsomorphism}
