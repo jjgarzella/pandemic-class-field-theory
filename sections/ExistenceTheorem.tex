@@ -1,0 +1,176 @@
+%\documentclass[11pt]{article}
+%\usepackage[utf8]{inputenc}
+%\usepackage{amsmath,amsfonts,amssymb,amsthm,tikz-cd,mathpazo,euler,mathtools}
+%\usetikzlibrary{arrows}
+%\tikzset{commutative diagrams/.cd,arrow style=tikz,diagrams={>=latex'}}
+%\usepackage[shortlabels]{enumitem}
+%\setlength\parindent{0pt}
+
+%\newcommand{\ZZ}{\mathbb{Z}}
+%\newcommand{\CC}{\mathbb{C}}
+%\newcommand{\QQ}{\mathbb{Q}}
+%\newcommand{\FF}{\mathbb{F}}
+%\newcommand{\NN}{\mathbb{N}}
+%\newcommand{\SL}{\operatorname{SL}}
+%\newcommand{\Div}{\operatorname{Div}}
+%\newcommand{\Hom}{\operatorname{Hom}}
+%\newcommand{\Spec}{\operatorname{Spec}}
+%\newcommand{\Fun}{\operatorname{Fun}}
+%\newcommand{\Nat}{\operatorname{Nat}}
+%\newcommand{\Aut}{\operatorname{Aut}}
+%\newcommand{\Gal}{\operatorname{Gal}}
+%\newcommand{\Frob}{\operatorname{Frob}}
+%\newcommand{\Ind}{\operatorname{Ind}}
+%\newcommand{\res}{\operatorname{res}}
+%\newcommand{\cor}{\operatorname{cor}}
+%\newcommand{\inv}{\operatorname{inv}}
+%\newcommand{\ord}{\operatorname{ord}}
+%\newcommand{\ev}{\operatorname{ev}}
+%\newcommand{\GL}{\operatorname{GL}}
+%\newcommand{\Br}{\operatorname{Br}}
+%\newcommand{\C}{\operatorname{C}}
+%\newcommand{\B}{\mathrm{B}}
+%\newcommand{\Nm}{\mathrm{Nm}}
+%\newcommand{\im}{\mathrm{im}}
+%\newcommand{\frakm}{\mathfrak{m}}
+%\newcommand{\frakn}{\mathfrak{n}}
+%\newcommand{\fraka}{\mathfrak{a}}
+%\newcommand{\frakb}{\mathfrak{b}}
+%\newcommand{\frakc}{\mathfrak{c}}
+%\newcommand{\frakp}{\mathfrak{p}}
+%\newcommand{\frakq}{\mathfrak{q}}
+%\newcommand{\frakP}{\mathfrak{P}}
+%\newcommand{\frakO}{\mathfrak{O}}
+%
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definition}[section]
+%\newtheorem{lemma}{Lemma}[section]
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{proposition}{Proposition}[section]
+%\newtheorem{corollary}{Corollary}[section]
+%\newtheorem{remark}{Remark}[section]
+%\newtheorem{example}{Example}[section]
+%\newtheorem{conjecture}{Conjecture}[section]
+
+\begin{document}
+
+\section{The Local Existence Theorem}
+
+
+\begin{theorem}
+	For a local field $K$, there is a homomorphism $r_K:K^{\times}\to G_K^{ab}$ with dense image characterized by the commutativity of the diagram
+	\[
+	\begin{tikzcd}
+		& \Hom(K^{\times},\ZZ/n\ZZ)\times K^{\times}/(K^{\times})^{n}\ar[d,shift left=3.5em,"\text{Kummer}","\simeq"']\ar{r}{\text{eval}} & \ZZ/n\ZZ\ar[hookrightarrow]{d}{\cdot\frac{1}{n}}\\
+		\Hom(G_k^{ab},\ZZ/n\ZZ)\ar{ur}{r_K^{*}}\ar[equals]{r} & H^{1}(K,\ZZ/n\ZZ)\times H^{1}(K,\mu_n)\ar{r}{\langle\ ,\ \rangle_K} & \QQ/\ZZ 
+	\end{tikzcd}
+	.\] 
+	It satisfies
+	\begin{enumerate}[(1)]
+		\setcounter{enumi}{4}
+		\item The diagram
+			\[
+			\begin{tikzcd}
+				1\ar[r]&\mathcal{O}_K^{\times}\ar[r]\ar[d,"\simeq"]&K^{\times}\ar[r]\ar[d,hookrightarrow,"r_k"]&\ZZ\ar[r]\ar[d,hookrightarrow]&0\\
+				1\ar[r]&I_{K^{ab}}\ar[r]&G_K^{ab}\ar[r]&G_k^{ab}\ar[r]&0
+			\end{tikzcd}
+			.\] 
+		\item (Existence Theorem) The open subgroups of finite index in $K^{\times}$ are precisely the norm groups. Moreover, $L\mapsto N_{L/K}(L^{\times})$ gives a one-to-one correspondence between finite abelian extensions of $K$ and open subgroups of finite index satisfying
+			\begin{itemize}
+				\item $L_1\subseteq L_2$ if and only if $N(L_2^{\times})\subseteq N(L_1^{\times})$,
+				\item $N_{L_1L_2}=N_{L_1}\cap N_{L_2}$, and
+				\item $N_{L_1\cap L_2}=N_{L_1}\cdot N_{L_2}$.
+			\end{itemize}
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	We first prove (5). We first check commutativity of the diagram
+	\[
+	\begin{tikzcd}
+		K^{\times}\ar[r,"\nu_k"]\ar[d] & \ZZ\ar[r]\ar[d] & 0\\
+		G_k^{ab}\ar[r] & G_k\simeq G(K^{ur}/K)\ar[r,"\simeq"] & 1
+	\end{tikzcd}
+	.\] 
+	Let $a\in K^{\times}$, $\chi\in H^{1}(G(K^{ur}/K),\QQ/\ZZ)$. We need to show that
+	\[
+		\chi(r_k(a))=\chi\left(\Frob_k^{-\nu_k(a)}\right)
+	.\] 
+	We know that $\chi(r_k(a))=-\inv_K(a\smile d\chi)$. The diagram
+	\[
+		\begin{tikzcd}[column sep = 1em]
+		H^{0}(G(K^{ur}/K),(K^{ur})^{\times})\times H^{2}(G(K^{ur}/K),\ZZ)\ar[r,"\smile"] & H^{2}(G(K^{ur}/K),(K^{ur})^{\times})\ar[r,"\inf","\simeq"']\ar[d,"\nu_K"] & \Br(K)\ar[d,"\inv_K"]\\
+												 & H^{2}(G(K^{ur}/K),\ZZ) & \QQ/\ZZ\\
+												 & H^{1}(G(K^{ur}/K),\QQ/\ZZ)\ar[ru,"\ev"']\ar[u,"d"',"\simeq"] & 
+	\end{tikzcd}
+	\] 
+	commutes, so we see that 
+	\begin{align*}
+		\chi(r_K(a))&=-\inv_K(a\smile d\chi)\\
+			    &=-\ev\circ d^{-1}\circ\nu_K(a\smile d\chi)\\
+			    &=-\ev(\nu_K(a)\cdot\chi)\\
+			    &=\chi\left(\Frob_k^{-\nu_K(a)}\right)
+	.\end{align*}
+	This diagram then induces
+	\[
+	\begin{tikzcd}
+		1\ar[r]&\mathcal{O}_K^{\times}\ar[r]\ar[d]&K^{\times}\ar[r]\ar[d,hookrightarrow,"r_k"]&\ZZ\ar[r]\ar[d,hookrightarrow]&0\\
+		1\ar[r]&G(K^{ab}/K^{ur})\ar[d,equals]\ar[r]&G_K^{ab}\ar[r]&G_k^{ab}\ar[r]&0\\
+		       & I_{K^{ab}} & & &
+	\end{tikzcd}
+	.\] 
+	We claim that $r_K\mid_{\mathcal{O}_K^{\times}}$ is an isomorphism. $r_k$ is injective, so we need to prove surjectivity. Let $L/K$ be a finite abelian extension. Consider the tower
+	\[
+	\begin{tikzcd}
+		L\ar[d,-,"I_{L/K}"]\\
+		M\ar[d,-,"\text{unr.}"]\\
+		K
+	\end{tikzcd}
+	.\] 
+	Fix $h\in I_{L/K}$. We know that there exists $a\in K^{\times}$ such that $r_K(a)=h$. By (5),
+	\[
+		\Frob_K^{-\nu_K(a)}\mid_M=r_K(a)\mid_M=h(a)\mid_M=1
+	.\] 
+	It follows that $f_{L/K}\mid\nu_K(a)$. Thus, there exists some $b\in L^{\times}$ such that $\nu_K(a)=f_{L/K}\cdot\nu_L(b)=\nu_K(N(b))$. But then $u=a\cdot N(b)^{-1}\in\mathcal{O}_K^{\times}$, and $r_K(u)=h$. $r_K(\mathcal{O}_K^{\times})$ is then dense in $I_{K^{ab}}$. Since $\mathcal{O}_K^{\times}$ is compact and $r_K$ is continuous, $r_K(\mathcal{O}_K^{\times})$ is also compact. In particular, it is closed, so $r_K(\mathcal{O}_K^{\times})=I_K^{ab}$.\\
+	We now prove (6). We have seen that $\mathcal{O}_K^{\times}\xrightarrow{r_K}I_{K^{ab}}$ is an isomorphism. In fact since $\mathcal{O}_K^{\times}$  is compact, $I_{K^{ab}}$ is Hausdorff, and $r_K$ is a continuous bijection, $r_K$ must be a homeomorphism.\\
+	For a finite abelian extension $L/K$, we then have
+	\[
+		\mathcal{O}_K^{\times}\xrightarrow{\text{homeo.}}I_{K^{ab}}=\varprojlim_{\stackrel{L/K}{\text{fin., ab.}}}I_{L/K}\cong\varprojlim_{\stackrel{L/K}{\text{fin., ab.}}}\mathcal{O}_K^{\times}/\left(N(L^{\times})\cap\mathcal{O}_K^{\times}\right)
+	.\] 
+	So the topology on $\mathcal{O}_K^{\times}$ induced by norm subgroups is the usual profinite topology. That is, for a (profinite) open $U\subseteq\mathcal{O}_K^{\times}$, the map $\mathcal{O}_K^{\times}\twoheadrightarrow\mathcal{O}_K^{\times}/U$ factors
+	\[
+	\begin{tikzcd}
+		\mathcal{O}_K^{\times}\ar[r,two heads]\ar[dr,dashed] & \mathcal{O}_K^{\times}/U\\
+								   & \mathcal{O}_K^{\times}/\left(N(L^{\times})\cap\mathcal{O}_K^{\times}\right)\ar[u,dashed]
+	\end{tikzcd}
+	\] 
+	for some $L/K$ finite and abelian. Now let $U\subset K^{\times}$ be open and of finite index. $U\cap\mathcal{O}_K^{\times}$ is then open and of finite index and
+	\[
+		\nu_K(U)\supset m\ZZ\text{ for some } m\ge 1
+	.\] 
+	There exists some finite abelian extension $L/K$ such that 
+	\[
+		N(L^{\times})\cap\mathcal{O}_K^{\times}\subset U\cap\mathcal{O}_K^{\times}
+	.\] 
+	By replacing $L$ by the composite of $L$ and an unramified extension of sufficiently high degree, we may assume that $\nu_K(N(L^{\times}))\subset\nu_K(U)$. Then
+	\[
+		N(L^{\times})\subset U\subset K^{\times}
+	\] 
+	and everything is open and of finite index. Now we need to show that $U$ is itself a norm group. We have a commutative diagram
+	\[
+	\begin{tikzcd}
+		K^{\times}/N(L^{\times})\ar[r,"\simeq","r_{L/K}"']\ar[d,two heads] & G(L/K)\ar[d, two heads, "\text{Gal. Theory}"]\\
+		K^{\times}/U\ar[r,"\simeq","r_K"'] & G(M/K) & K^{\times}/N(M^{\times})\ar[l,"r_K","\simeq"']
+	\end{tikzcd}
+	\] 
+	for some tower
+	\[
+	\begin{tikzcd}
+		L\ar[d,-]\\
+		M\ar[d,-,"\text{Galois}"]\\
+		K
+	\end{tikzcd}
+	\] 
+	This shows that $U=N_{M/K}(M^{\times})$, as desired.
+\end{proof}
+\end{document}
+

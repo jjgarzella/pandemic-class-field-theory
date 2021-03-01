@@ -1,28 +1,28 @@
-\documentclass[a4paper]{article}
+%\documentclass[a4paper]{article}
 
 %% Language and font encodings
-\usepackage[english]{babel}
-\usepackage[utf8x]{inputenc}
-\usepackage[T1]{fontenc}
-
-%% Sets page size and margins
-\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
-
-%% Useful packages
-\usepackage{mathptmx,amsmath,colonequals}
-\usepackage{amssymb,gensymb,mathrsfs}
-\usepackage{amscd,amsthm}
-\usepackage{mathtools}
-\usepackage{graphicx}
-\usepackage[colorinlistoftodos]{todonotes}
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}
-\usepackage[shortlabels]{enumitem}
-\usepackage{extarrows}
-\usepackage{tikz,tikz-cd}
+%\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[T1]{fontenc}
+%
+%%% Sets page size and margins
+%\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+%
+%%% Useful packages
+%\usepackage{mathptmx,amsmath,colonequals}
+%\usepackage{amssymb,gensymb,mathrsfs}
+%\usepackage{amscd,amsthm}
+%\usepackage{mathtools}
+%\usepackage{graphicx}
+%\usepackage[colorinlistoftodos]{todonotes}
+%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+%\usepackage[shortlabels]{enumitem}
+%\usepackage{extarrows}
+%\usepackage{tikz,tikz-cd}
 
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
-\newtheorem{cor}[thm]{Corollary}
+%\newtheorem{cor}[thm]{Corollary}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{conj}[thm]{Conjecture}
 
@@ -58,7 +58,7 @@
 \newcommand{\basering}{R}
 
 % commalg specific?
-\newcommand{\Hom}{\operatorname{Hom}}
+%\newcommand{\Hom}{\operatorname{Hom}}
 \newcommand{\Ext}{\operatorname{Ext}}
 \newcommand{\Tor}{\operatorname{Tor}}
 
@@ -68,12 +68,12 @@
 %\newcommand{\injd}{\operatorname{injd}}
 
 % algebraic geometry
-\newcommand{\Spec}{\operatorname{Spec}}
+%\newcommand{\Spec}{\operatorname{Spec}}
 \newcommand{\Spa}{\operatorname{Spa}}
 
 % custom ops here
 \newcommand{\Syl}{\operatorname{Syl}}
-\newcommand{\Gal}{\operatorname{Gal}}
+%\newcommand{\Gal}{\operatorname{Gal}}
 
 
 
@@ -84,14 +84,17 @@
 
 \begin{document}
 
-\maketitle
+%\maketitle
+
+\section{Some Corollaries}
+
 
 We'll start with a few corollaries of the calculation of the Braur Group.
 
 Corollary 1 in Wei's talk
 
 
-\begin{cor}
+\begin{corollary}
 	\begin{enumerate}[(1)]
 		\item \(Br(K^{unr}) = 0\)
 		\item \(H^{2}(I_{K},\mu_{n}) = 0\) for all \(n\) with \(0 \leq n\)
@@ -102,7 +105,7 @@ Corollary 1 in Wei's talk
 			and for \(i\) with \(3 \leq i\), 
 			\(H^{i}(G_{K},M) = 0\).
 	\end{enumerate}
-\end{cor}
+\end{corollary}
 
 We will state the following lemma without proof, it has been used before
 and it appears in Neukirch as Proposition 1.5.1
@@ -120,14 +123,14 @@ and it appears in Neukirch as Proposition 1.5.1
 By taking one either the \(G_{i}\) or the \(A_{i}\) to be identically
 \(G\) (resp. A), we get the following corollary:
 
-\begin{cor}\label{cor:lim:cohom}
+\begin{corollary}\label{cor:lim:cohom}
 	\begin{enumerate}[(a)]
 		\item If \(G = \lim G_{i}\), then 
 			\(H^{n}(G,A) = \colim H^{n}(G_{i},A)\) for a fixed \(A\).
 		\item IF \(A = \colim A_{i}\), then 
 			\(H^{n}(G,A) = \colim H^{n}(G,A_{i})\) for a fixed \(G\).
 	\end{enumerate}
-\end{cor}
+\end{corollary}
 
 It is this corollary that will be most useful to us.
 
