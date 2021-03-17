@@ -60,114 +60,11 @@
 %\title{Isomorphism of the Inv function 7/30/2020}
 
 
-\author{Yuhui Yao}
+%\author{Yuhui Yao}
 %\maketitle
 
-\section{General Case: Isomorphsim of the Inv function}
-
-
-There are two diagrams that we want to keep in mind, both of which were introduced by Sriram. The first one is the theorem we wish to prove about the Brauer group:
-
-
-\begin{center}
-\begin{tikzcd} 
-Br(K)   \arrow{r}{res} \arrow{d}[near start]{\sim}[near end]{\text{inv}_K}& Br(L) \arrow{d}[near start]{\sim}[near end]{\text{inv}_L} \\
-\mathbb{Q}/\mathbb{Z} \arrow{r}{[L:K]} & \mathbb{Q}/\mathbb{Z}
-\end{tikzcd}
-\end{center}
-
-
-From now on, we abbreviate $G(K^{ur}/K)$ as $A_K$ and $H^2(A_K, (K^{ur})^\times)$ as $H^2(K^{ur})$ to simplify notation. Also, $H^2(G_K, \bar{K}^\times)$ will be $H^2(\bar{K}^\times)$. 
-The diagram that we have constructed in order to prove this is the following:
-
-
-\begin{center}
-\begin{tikzcd}
-H^2(\bar{K}^\times) \arrow[r, dashed]  & \mathbb{Q}/\mathbb{Z}  \\
-H^2(K^{ur}) \arrow{u}[near start]{\sim}[near end]{\text{inf}} \arrow{r}{\text{ord}} & H^2(A_K,\mathbb{Z}) & H^1(A_K, \mathbb{Q}/\mathbb{Z}) \arrow{l}{\delta} \arrow{ul}[near start]{\sim}[near end]{\text{ev}}
-\end{tikzcd}
-\end{center}
-
-Last time, we showed ord, $\delta$, and ev are isomorphisms. Specifically, our calculations were in the unramified case. This time, our goal is to show that the inf map is an isomorphism; there are two ways to go about doing that. The first is by extending the calculation to ramified extensions and then going about it by using an induction argument on the degree of a general extension $L/K$, starting with the case where $L/K$ is a cyclic extension. The second way is by taking $Br(K^{ur})=0$ as a central central algebra, then applying Hochschild-Serre to this result to get $Br(K)\cong H^2(K^{ur})$ via the inflation map. Stefan may have something to say about this. 
-
-Proceeding by our method:
-
-Let $L/K$ be an arbitrary finite Galois extension of degree $n$. 
-
-We can look at the commutative diagram from last time, which is: 
-
-\begin{center}
-\begin{tikzcd} 
-H^2(K^{ur})\arrow{r}{res} \arrow{d}[near start]{\sim}[near end]{\text{inv}_K}& H^2(L^{ur}) \arrow{d}[near start]{\sim}[near end]{\text{inv}_L}\\
-\mathbb{Q}/\mathbb{Z} \arrow{r}{[L:K]} & \mathbb{Q}/\mathbb{Z}
-\end{tikzcd}
-\end{center}
-
-Where the bottom map is multiplication by $n$, the degree of the extension $[L:K]$. This means that the kernel of the top map, $res$, is ismorphic to a copy of the $n$ torsion elements in $\mathbb{Q}/\mathbb{Z}$, which is $\mathbb{Z}/n\mathbb{Z}$. This was stated last time as $1/n\mathbb{Z}/\mathbb{Z}$, but I think these are isomorphic. 
-
-Because Gal$(K^{un}/K)$ is a quotient subgroup of $G_K$, we have the induced inflation map on cohomologies: $\text{inf}_K:H^2(K^{ur})\rightarrow H^2(\bar{K}):=H^2(G_K,\bar{K})$ giving us the following diagram: 
-
-\begin{center}
-\begin{tikzcd} 
-0\arrow[r] &    \ker(res)\arrow[r, hook]\arrow[d, dashed]&    H^2(K^{ur})\arrow{r}{res} \arrow{d}{\text{inf}_K}&       H^2(L^{ur}) \arrow{d}{\text{inf}_L}\\
-0\arrow[r] &        H^2(L/K) \arrow[r, hook] &   H^2(\bar{K}) \arrow[r] & H^2(\bar{L})
-\end{tikzcd}
-\end{center}
-
-Our end goal is to show that the dotted arrow extending the map on the left side is an isomorphism. This will imply the result that we want, as we will have $\forall L/K$ finite, Galois extensions, $H^2(L/K)\cong \ker(\text{res}: H^2(K^{ur})\rightarrow H^2(L^{ur}))$.\\
-In particular, taking the direct limit over all finite Galois extensions, we will have $$H^2(\bar{K}/K)=\lim H^2(L/K)=\lim \ker(\text{res}: H^2(K^{ur})\rightarrow H^2(L^{ur})) \cong H^2(K^{ur})$$ Here's justification for the last isomorphism. We restate two facts from Milne: \\
-2.1.34: If $H$ is normal in $G$, and $M$ is a $G$ module, and $H^i(H, M)=0 \forall i\in [1, r-1]$ for some $r\in\mathbb{Z}_+$, then
-$$H^r(G/H, M^H)\cong \ker(\text{res}:H^r(G,M)\rightarrow H^r(H,M))$$ via the Inf map. \\
-2.1.36: if we have a tower of extensions: $K\subset L\subset N$ where $L, N$ are Galois over $K$, then Gal$(N/L)=H$ is a normal subgroup of Gal$(N/K)=G$. By proposition 1.22, $H^1(\text{Gal}(L/K), L^\times)=0$ for any finite Galois extension $L/K$. So we have an exact sequence
-$$0\rightarrow H^2(G/H, L^\times)\rightarrow H^2(G, N^\times)\rightarrow H^2(H, N^\times)$$
-
-Here, we take $N$ to be $\bar{K}$ and take the limit of $L$, and the result follows. 
-
-Now, to prove that the dotted line is an isomorphism, it is enough to prove that $|H^2(L/K)|\leq n$ as the inflation maps inf$_k$ and inf$_L$ are injections (so $H^2(L/K)$ contains a cyclic group of order $n$).\\
-
-To do so, we construct a $G$-stable open subgroup $V\subset \mathcal{O}_L^\times$ such that $H^r(G, V)=0\forall r\geq 1$. Here $G=Gal(L/K).$ Proceed by using the exponent map: this is a $G$ stable isomorphism in finite index mapping from $\mathcal{O}_L\rightarrow\mathcal{O}_L^\times$ sending open sets to open set. Thus, it is enough to construct a $G$-stable open subgroup in $\mathcal{O}_L$ instead. 
-
-By the Normal Basis theorem, there is a basis for $L\cong K[G]$ given by $\{x_\tau \mid x_\tau\in L, \tau\in G\}$. Clearing the denominators in this set, we can take all $x_\tau\in \mathcal{O}_L$. Construct $$V=\sum_\tau \mathcal{O}_Kx_\tau\cong_G\mathcal{O}_K[G]=\text{Ind}_1^G\mathcal{O}_K$$ 
-In particular, this construction gives $H^r(G,V)=0\forall r>0$ as $r$ is an induced module. 
-
-Now, we first get the result for when $L/K$ is a cyclic extension: 
-
-Recall the Herbrand quotient that Brian defined:
-
-$$h(G,M)=\frac{|H^2(G,M)|}{|H^1(G,M)|}$$
-
-And also the second proposition, that for any finite cyclic group $G$, $h(G,M)=1$. So,
-
-$\mathcal{O}_L^\times/V$ is finite so $1=h(G, V)=h(G, \mathcal{O}_L^\times)=h(L^\times)/h(\mathbb{Z})$
-
-Now, since $\mathbb{Z}$ has the trivial action of $G$, $h(\mathbb{Z})=|G|=n$. So $h(L^\times)=n=\frac{|H^2(G,L^\times)|}{|H^1(G,L^\times)|}=|H^2(G,L^\times)|$ and we are done with the cyclic case. 
-
-Now, to extend it to the general case, we proceed by induction on $[L:K]$. Let $[L:K]$ be an arbitrary finite Galois extension. By solvability of Galois groups, we can find an intermediate $K\subsetneq K'\subsetneq L$ such that $K'/K$ is Galois and cyclic. Then, we have the exact sequence $$0\rightarrow H^2(K'/K)\rightarrow H^2(L/K)\rightarrow H^2(L/K')$$ where the group is Gal$(L/K)$. We use the lemma that Brian introduced about the multiplicativity of orders of groups in exact sequences to deduce an upper bound for $|H^2(L/K)|:$
-
-
-$$|H^2(L/K)|\leq |H^2(L/K')|\cdot|H^2(K'/K)|\leq [L:K']\cdot[K':K]=[L:K]$$
-
- and we are done!
  
- The next thing to do is to establish local duality. We start this by proving some cohomological corollaries. 
- 
-\begin{corollary}
-$\text{inv}_K: H^2(G_K, \mu_n) \xrightarrow{\sim} (1/n)\mathbb{Z}/\mathbb{Z}$ is an isomorphism, where $\mu_n$ denotes the group of $n$th roots of unity in $K$.
-\end{corollary}
-\begin{proof}
-Consider the exact sequence $$1\rightarrow \mu_n\rightarrow \bar{K}^\times\xrightarrow{\cdot n}\bar{K}^\times\rightarrow 1$$ where the map from $\bar{K}^\times$ to $\bar{K}^\times$ is multiplication by $n$. Passing to the exact sequence induced by cohomology, we have $$0\rightarrow H^2(G_K,\mu_n)\xrightarrow{\sim} \text{Br}(K)[n]$$ 
-From the above, we know $\text{Br}(K)[N]=\frac{1}{n}\mathbb{Z}/\mathbb{Z}$
-\end{proof}
 
-\begin{corollary}
-Notation as above, let $I_K$ be the inertia group, then
-\begin{enumerate}
-    \item Br$(K^{ur})=0$
-    \item $H^2(I_K,\mu_n)=0\forall n\geq 0$
-    \item If $M$ is a torsion $I_K$ module, then $H^i(I_K, M)=0\forall i\geq 2$
-    \item if $M$ is a finite $G_K$-module, then $|H^2(I_K,\mu_n)|$ is finite $\forall n\geq 0$ and $H^i(G_K, M)=0\forall i\geq 3$.
-\end{enumerate}
-\end{corollary}
 
 
 \end{document}

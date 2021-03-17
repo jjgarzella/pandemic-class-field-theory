@@ -65,12 +65,56 @@
 \section{Some Corollaries}
 
 
+The next thing to do is to establish local duality. 
+We start this by proving some cohomological corollaries.  
+
+First, we consider a finite extension \(L / K\). 
+Hilbert Theorem 90 gives 
+$H^{1}(G_L,\overline{L}^{\times})=\left\lbrace1\right\rbrace$, 
+so we can use dimension shifting or the Hochschild-Serre spectral sequence 
+to extend the inflation-restriction exact sequence. 
+This combined with the theorem gives
+\[
+\begin{tikzcd}
+	0\ar[r] & H^{2}(G(L/K),\overline{L}^{\times})\ar[r] & H^{2}(G_K,\overline{K}^{\times})\ar{r}{\res}\ar[d,"\inv_K"',"\simeq"] & H^{2}(G_L,\overline{L}^{\times})\ar[d,"\inv_L","\simeq"']\\
+		& & \QQ/\ZZ\ar{r}[swap]{[L:K]} & \QQ/\ZZ
+\end{tikzcd}
+.\] 
+
+Therefore we have
+\begin{corollary}[Is this used anywhere?]
+	\[
+		H^{2}(\Gal(L/K),\overline{L}^{\times})
+		\simeq\frac{1}{[L:K]}\ZZ/\ZZ.
+	\]
+\end{corollary}
+
+Let us prove another corollary:
+\begin{corollary}
+$\text{inv}_K: H^2(G_K, \mu_n) \xrightarrow{\sim} (1/n)\mathbb{Z}/\mathbb{Z}$ is an isomorphism, where $\mu_n$ denotes the group of $n$th roots of unity in $K$.
+\end{corollary}
+\begin{proof}
+Consider the exact sequence $$1\rightarrow \mu_n\rightarrow \bar{K}^\times\xrightarrow{\cdot n}\bar{K}^\times\rightarrow 1$$ where the map from $\bar{K}^\times$ to $\bar{K}^\times$ is multiplication by $n$. Passing to the exact sequence induced by cohomology, we have $$0\rightarrow H^2(G_K,\mu_n)\xrightarrow{\sim} \text{Br}(K)[n]$$ 
+From the above, we know $\text{Br}(K)[N]=\frac{1}{n}\mathbb{Z}/\mathbb{Z}$
+\end{proof}
+
+\begin{corollary}
+Notation as above, let $I_K$ be the inertia group, then
+\begin{enumerate}
+    \item Br$(K^{ur})=0$
+    \item $H^2(I_K,\mu_n)=0\forall n\geq 0$
+    \item If $M$ is a torsion $I_K$ module, then $H^i(I_K, M)=0\forall i\geq 2$
+    \item if $M$ is a finite $G_K$-module, then $|H^2(I_K,\mu_n)|$ is finite $\forall n\geq 0$ and $H^i(G_K, M)=0\forall i\geq 3$.
+\end{enumerate}
+\end{corollary}
+
+
 We'll start with a few corollaries of the calculation of the Braur Group.
 
 Corollary 1 in Wei's talk
 
 
-\begin{corollary}
+\begin{proposition}
 	\begin{enumerate}[(1)]
 		\item \(Br(K^{unr}) = 0\)
 		\item \(H^{2}(I_{K},\mu_{n}) = 0\) for all \(n\) with \(0 \leq n\)
@@ -81,7 +125,7 @@ Corollary 1 in Wei's talk
 			and for \(i\) with \(3 \leq i\), 
 			\(H^{i}(G_{K},M) = 0\).
 	\end{enumerate}
-\end{corollary}
+\end{proposition}
 
 
 
@@ -128,9 +172,11 @@ Corollary 1 in Wei's talk
 				H^{2}(I_{K}, \mu_{n}) \to H^{2}(I_{K},\overline{K}^{\cross})
 				\to \ldots
 			\] 
-			The group on the left is zero by Hilbert Theorem 90, and
-			it turns out that as \(I_{K} \isom \Gal\left( 
-			\overline{K} / K^{unr} \right)\), the first theorem 
+			Now, we need to remember that 
+            \(I_{K} \isom \Gal\left( \overline{K} / K^{unr} \right)\).
+			With this in mind, we see that
+			the group on the left is zero by Hilbert Theorem 90, and
+			the first part of the proposition
 			says exactly that the group on the right is zero. 
 			We conclude our statement by exactness.
 			

@@ -1,5 +1,5 @@
 
-\section{Group Cohomology Bits and Bobs}
+\section{Group Cohomology}
 
 Here, we collect a number of facts about group cohomology
 which we will use in our proofs. 
@@ -11,9 +11,50 @@ For the reader who is new to class field theory,
 spending some time understanding each of these
 arguments in-depth might be helpful to following along later.
 
-\subsection{Some Lemmas}
+\subsection{Statements of Basic Lemmas}
+
+\subsubsection{Hilbert's Theorem 90}
+
+Hilbert's Theorem 90, which has a celebrated history,
+can be stated in terms of group cohomology in the following
+way:
+
+\begin{theorem}[Hilbert's Theorem 90]
+	\[
+		H^{1}(\Gal(L / K), L^{\times}) = 0
+	\] 
+\end{theorem}
+
+It is worth remarking that the general version of this
+theorem is due to Noether, and the name comes from
+a weaker version that was originally proved by Hilbert.
 
 \subsubsection{Shapiro's Lemma}
+
+For some subgroup \(H\) of \(G\), and an \(H\)-module \(N\),
+we can consider the induced representation
+\(\Ind_{H}^{G} N\), which is a \(G\)-module.
+Shapiro's lemma relates the respective group cohomology 
+
+\begin{lemma}
+	If \(H\) has finite index in \(G\), then 
+	\[
+		H^{i}(G,\Ind_{H}^{G} N) = H^{i}(H,N)
+	\] 
+	for all \(i\). 
+\end{lemma}
+
+\begin{remark}
+	The reason for the finite index assumption is the 
+	difference between coinduced and induced representations,
+	which coincide in this case.
+%https://ayoucis.wordpress.com/2014/06/24/fundamentals-of-abelian-group-cohomology/#more-824
+\end{remark}
+
+We will often apply this lemma in the situation where
+\(G\) is a finite group and \(H\) is the trivial subgroup,
+in which case the induced \(G\)-module has trivial cohomology.
+This will be helpful in situations where we have an exact sequence.
 
 \subsubsection{Limits and Cohomology}
 
@@ -37,12 +78,31 @@ By taking one either the \(G_{i}\) or the \(A_{i}\) to be identically
 	\begin{enumerate}[(a)]
 		\item If \(G = \lim G_{i}\), then 
 			\(H^{n}(G,A) = \colim H^{n}(G_{i},A)\) for a fixed \(A\).
-		\item IF \(A = \colim A_{i}\), then 
+		\item If \(A = \colim A_{i}\), then 
 			\(H^{n}(G,A) = \colim H^{n}(G,A_{i})\) for a fixed \(G\).
 	\end{enumerate}
 \end{corollary}
 
 It is this corollary that will be most useful to us later.
+
+\subsubsection{Cyclic Groups}
+
+\begin{lemma} \label{lem:cohom:cycl}
+	Perodicity of cohomology of cyclic groups
+\end{lemma}
+
+\begin{itemize}
+	\item Periodicity of cohomology of cyclic groups
+	\item Dimension shifting
+\end{itemize}
+
+\subsection{Explanation of Cohomology Arguments}
+
+\subsubsection{Dimension Shifting}
+
+\subsubsection{Kummer Theory}
+
+\subsubsection{Hochschild-Serre Spectral Sequence}
 
 \subsection{Functorial Properties of Cohomology}
 Let $M$ be a $G$-module and $M'$ a $G'$-module. Two maps $\alpha:G'\to G$ and $\beta:M\to M'$ are \textbf{compatible} if $\beta(\alpha(g)m)=g(\beta(m))$. If $(\alpha,\beta)$ is a compatible pair, then $(\alpha,\beta)$ defines a homomorphism of complexes

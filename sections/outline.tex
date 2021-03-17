@@ -1,27 +1,95 @@
 
 \section{Sketch of the plan}
 
-Prerequisites
-\begin{itemize}
-	\item Some familiarity with derived categories/functors,
-		some spectral sequences, and group cohomology
-	\item No motivation for LCFT will be given, this is assumed.
-	%\item Some familiarity with SES-LES arguemnts
-	\item Hilbert's theorem 90
-	\item "dimension shifting" and "kummer theory" arguments
-\end{itemize}
+%Prerequisites
+%\begin{itemize}
+%	\item Some familiarity with derived categories/functors,
+%		some spectral sequences, and group cohomology
+%	\item No motivation for LCFT will be given, this is assumed.
+%	%\item Some familiarity with SES-LES arguemnts
+%	\item Hilbert's theorem 90
+%	\item "dimension shifting" and "kummer theory" arguments
+%\end{itemize}
 
+In this expository work, we prove the theorems of 
+local class field theory. 
+As well-known and long-celebrated as class field theory is, 
+there are many excellent sources on the subject. 
+Among these are Milne (cite) and Kedlaya (cite), both freely
+available online. 
 
-Our first order of business will be to calculate
-the brauer group of a local field.
-For our purposes, the Brauer group is the 
-cohomology group XXXXXXXXXXX.
+Our motivation for writing up class field theory yet again 
+is the method
+of proof itself. 
+Both Kedlaya and Milne use Tate's theorem on group cohomology
+as the key step in establishing the result. 
+On the other hand, we will establish reciprocity through
+the local Tate duality theorem.
+The duality theorem is extremely important in modern number
+theory, so a teacher or student 
+may want to introduce it early for pedagogical reasons.
 
+We have endeavored to make this exposition usable as a 
+rough
+``drop-in'' replacement for the corresponding proofs 
+in Kedlaya (sections 4.1-4.3) and 
+Milne (sections III.1-III.3 and III.5).
+In particular, we give no motivation for class field 
+theory, we will not mention global class feild theory,
+and we give few details on group cohomology,
+opting instead to state many fundamental lemmas with references.
+Given the option between a ``more explicit'' and a
+``more cohomologcal'' approach, we will pick the
+more cohomological one.
+Terse cohomology arguments--including the ever-intimdating
+``spectral sequence''--will be explained in the section on
+group cohomology.
 
-Once we know the Brauer group, we deduce a few corollaries,
-and then we will define the Tate local duality pairing.
-We will then prove that this pairing is perfect,
-which will allow us to deduce the theorems of
-local class field theory.
+We always work in characteristic 0.
+What about the norm limitation theorem?
 
+%First, we start by calculating the Brauer group of a local field,
+%first in the unramified case and then the ramified case.
+%Then, we will use this to establish local Tate duality,
+%finally deducing Artin Reciprocity and the Existence Theorem
+%as corollaries.
+%
+%Our approach is similar in spirit to Kedlaya (cite) and 
+%Milne (cite). 
+%While our method is similar in spirit to these sources, our
+%aim specifically is to introduce the local tate duality
+%theorem.
+%
+%Our first order of business will be to calculate
+%the Brauer group of a local field.
+%Once we know the Brauer group, we deduce a few corollaries,
+%and then we will define the Tate local duality pairing.
+%We will then prove that this pairing is perfect,
+%which will allow us to deduce the theorems of
+%local class field theory.
+%
+%This method can be contrasted with the approach of Milne \cite{milne}
+%or Kedlaya \cite{kedlaya}. 
+%Both start with the same basic
+%calculation of the Brauer group, but use an abstract cohomological 
+%theorem due to Tate. 
+%This ``Abstract Class Field Theory'' approach 
+%works well, but the setup is only really good for one thing:
+%proving Class Field Theory. 
+%Our motivation (and presumably Taylor's original motivation
+%for teaching this in an undergrad class) for choosing local tate 
+%duality is to introduce 
+%another tool
+%that the reader may happen across in their furter study of Number 
+%Theory.
+
+\subsection{Notation}
+
+Throughout, we assume that \(K\) is a local field
+of charactaristic zero. 
+%The strategy ought to also work in the function field case
+
+When we write \(\frac{1}{n}\mathbb{Z} / \mathbb{Z}\), we mean
+the cyclic group of order \(n\), considered as a subgroup of
+\(\mathbb{Q} / \mathbb{Z}\).
 
