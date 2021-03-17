@@ -62,11 +62,17 @@
 
 %\maketitle
 
-\section{Some Corollaries}
+\section{Some Cohomological Corollaries}
 
-
-The next thing to do is to establish local duality. 
-We start this by proving some cohomological corollaries.  
+At this point we have completely the first major 
+milestone, calculating the Brauer group.
+Now, we deduce many consequences of this theorem 
+in terms of group cohomology that we will need later.
+Each of the proofs is more or less straightforward
+applications of the machinery of group cohomology,
+so if the reader is familiar with these methods
+or wants to save the gory details for later, the 
+proofs can be skipped.
 
 First, we consider a finite extension \(L / K\). 
 Hilbert Theorem 90 gives 
@@ -94,27 +100,36 @@ Let us prove another corollary:
 $\text{inv}_K: H^2(G_K, \mu_n) \xrightarrow{\sim} (1/n)\mathbb{Z}/\mathbb{Z}$ is an isomorphism, where $\mu_n$ denotes the group of $n$th roots of unity in $K$.
 \end{corollary}
 \begin{proof}
-Consider the exact sequence $$1\rightarrow \mu_n\rightarrow \bar{K}^\times\xrightarrow{\cdot n}\bar{K}^\times\rightarrow 1$$ where the map from $\bar{K}^\times$ to $\bar{K}^\times$ is multiplication by $n$. Passing to the exact sequence induced by cohomology, we have $$0\rightarrow H^2(G_K,\mu_n)\xrightarrow{\sim} \text{Br}(K)[n]$$ 
+Consider the exact sequence 
+$$1\rightarrow \mu_n\rightarrow 
+\bar{K}^\times\xrightarrow{\cdot n}\bar{K}^\times\rightarrow 1$$ 
+where the map from 
+$\bar{K}^\times$ 
+to $\bar{K}^\times$ 
+is multiplication by $n$. 
+Passing to the exact sequence induced by cohomology, we have 
+by Hilbert Theorem 90
+$$0\rightarrow H^2(G_K,\mu_n)\xrightarrow{\sim} \text{Br}(K)[n]$$ 
 From the above, we know $\text{Br}(K)[N]=\frac{1}{n}\mathbb{Z}/\mathbb{Z}$
 \end{proof}
 
-\begin{corollary}
-Notation as above, let $I_K$ be the inertia group, then
-\begin{enumerate}
-    \item Br$(K^{ur})=0$
-    \item $H^2(I_K,\mu_n)=0\forall n\geq 0$
-    \item If $M$ is a torsion $I_K$ module, then $H^i(I_K, M)=0\forall i\geq 2$
-    \item if $M$ is a finite $G_K$-module, then $|H^2(I_K,\mu_n)|$ is finite $\forall n\geq 0$ and $H^i(G_K, M)=0\forall i\geq 3$.
-\end{enumerate}
-\end{corollary}
-
-
-We'll start with a few corollaries of the calculation of the Braur Group.
-
-Corollary 1 in Wei's talk
+%\begin{corollary}
+%\begin{enumerate}
+%    \item Br$(K^{ur})=0$
+%    \item $H^2(I_K,\mu_n)=0\forall n\geq 0$
+%    \item If $M$ is a torsion $I_K$ module, then $H^i(I_K, M)=0\forall i\geq 2$
+%    \item if $M$ is a finite $G_K$-module, then $|H^2(I_K,\mu_n)|$ is finite $\forall n\geq 0$ and $H^i(G_K, M)=0\forall i\geq 3$.
+%\end{enumerate}
+%\end{corollary}
+%
+%
+%We'll start with a few corollaries of the calculation of the Braur Group.
+%
+%Corollary 1 in Wei's talk
 
 
 \begin{proposition}
+Notation as above, let $I_K$ be the inertia group, then
 	\begin{enumerate}[(1)]
 		\item \(Br(K^{unr}) = 0\)
 		\item \(H^{2}(I_{K},\mu_{n}) = 0\) for all \(n\) with \(0 \leq n\)
@@ -175,7 +190,9 @@ Corollary 1 in Wei's talk
 			Now, we need to remember that 
             \(I_{K} \isom \Gal\left( \overline{K} / K^{unr} \right)\).
 			With this in mind, we see that
-			the group on the left is zero by Hilbert Theorem 90, and
+			the group on the left is zero by Hilbert Theorem 90
+			{\color{red} This isn't the exact formulation,
+			check precisely how hilb90 imply this}, and
 			the first part of the proposition
 			says exactly that the group on the right is zero. 
 			We conclude our statement by exactness.
@@ -185,6 +202,7 @@ Corollary 1 in Wei's talk
 			finite (and thus torsion) modules, by Corollary \ref{cor:lim:cohom}.
 			First, we will reduce to cohomological dimension 2 by dimension
 			shifting. 
+			{\color{red} factor out this dimension shifting argument?}
 			Assume \(H^{2}(M) = 0\) for all torsion modules \(M\).
 			First, fix \(M\) and embed it into an injective module \(I\) 
 			which is also torsion.
@@ -204,7 +222,7 @@ Corollary 1 in Wei's talk
 			and by assumption, the \(H^{2}(I / M)\) must be zero.
 			As \(I\) is injective, its \(H^{3}\) is zero and we conclude
 			that \(H^{3}(M)\) is zero. 
-			By induction, exten this to \(H^{i}(M)\) for \(2 \leq i\).
+			By induction, extend this to \(H^{i}(M)\) for \(2 \leq i\).
 
 			Finally, we will show that \(H^{2}(I_{K},M)\) is zero 
 			for a finite torsion module \(M\) :
@@ -325,49 +343,6 @@ Corollary 1 in Wei's talk
 
 -----
 
-We will now state the local duality theorem. 
-This will have the reciprocity law as a consequence.
-
-\begin{definition}
-	If \(M\) is a finite \(G_{K}\)-module, then \(M^{\star} :=
-	\Hom_{} (M,\mu_{\infty})\) is the \textit{Tate dual} of \(M\).
-\end{definition}
-
-Our action as a \(G_{K}\)-module is not exactly what you would expect.
-We have  \((g \cdot \phi)(m) = g \cdot \phi(g^{-1} m)\) for \(g \in G_{K}\),
-\(\phi \in M^{*}\), \(m \in M\).
-Note that there is an ``extra'' action of \(g\) in our construction,
-unlike (for example) the construction of the opposite group action.
-
-This gives us a \(G_{K}\)-equivariant map  
-\[
-\Phi : M \otimes M^{\star} \to \mu_{\infty}
-\] 
-(find the map from the product, it is \(\mathbb{Z}\)-bilinear).
-Now, the cup product gives us a map
-\[
-	H^{i}(G_{K},M) \times H^{2-i}(G_{K},M^{\star})
-	\to H^{2}(G_{K}, M \otimes_{Z} M^{\star})
-	\to H^{2}(G_{K}, \mu_{\infty})
-	\isom \mathbb{Q} / \mathbb{Z}
-\] 
-Where the map in the middle is by \(\Phi\).
-The composition of these is called the \textit{duality map}, and it is 
-denoted \(\left<\cdot,\cdot \right>_{K}\).
-
-Now, our big duality theorem
-
-\begin{theorem}
-	\(\left<\cdot,\cdot\right>_{K}\) is a perfect pairing.
-\end{theorem}
-
-This means that 
-\[
-	H^{i}(G_{K},M) \isom \Hom_{} (H^{2-i}(G_{K},M^{\star},\mathbb{Q} / \mathbb{Z})
-\] 
-and vice versa.
-We want to think of the RHS as the dual of the LHS, but note that it 
-is not the same as the duality pairing from above. 
 
 
 

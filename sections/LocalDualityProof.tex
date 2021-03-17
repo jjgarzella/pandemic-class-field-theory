@@ -19,15 +19,62 @@
 \DeclareMathAlphabet{\mathbbold}{U}{bbold}{m}{n}
 \begin{document}
 
-\section{Proof of Local Tate Duality}
+\section{Local Tate Duality}
 
-Fix $K/\mathbb{Q}_p$ a finite extension. Let $M$ be a $G_K$-module. 
-\vskip 5pt
-\textbf{Definition}: We let $M^* = \text{Hom}(M, \mu_{\infty})$ denote the \textit{Tate Dual} of $M$. 
-\vskip 5pt 
+We will now state the local duality theorem. 
+Later, this will have the reciprocity law as a consequence.
+
+\begin{definition}
+	Let \(M\) be a finite \(G_{K}\)-module. \(M^{\star} :=
+	\Hom_{} (M,\mu_{\infty})\) is the \textit{Tate dual} of \(M\).
+\end{definition}
+
+Our action as a \(G_{K}\)-module is not exactly what you would expect.
+We have  \((g \cdot \phi)(m) = g \cdot \phi(g^{-1} m)\) for \(g \in G_{K}\),
+\(\phi \in M^{*}\), \(m \in M\).
+Note that there is an ``extra'' action of \(g\) in our construction,
+unlike (for example) the construction of the opposite group action.
+
+\textbf{Example}: $M=\mathbb{Z}/n$ with trivial $G_K$ action gives $M^*\cong \mu_{n}\subset \overline{K}$. Essentially the Tate Dual in this case equips $\mathbb{Z}/n$ with some natural $G_K$ action.
+
+This gives us a \(G_{K}\)-equivariant map  
+\[
+\Phi : M \otimes M^{\star} \to \mu_{\infty}
+\] 
+(find the map from the product, it is \(\mathbb{Z}\)-bilinear).
+Now, the cup product gives us a map
+\[
+	H^{i}(G_{K},M) \times H^{2-i}(G_{K},M^{\star})
+	\to H^{2}(G_{K}, M \otimes_{Z} M^{\star})
+	\to H^{2}(G_{K}, \mu_{\infty})
+	\isom \mathbb{Q} / \mathbb{Z}
+\] 
+Where the map in the middle is by \(\Phi\).
+The composition of these is called the \textit{duality map}, and it is 
+denoted \(\left<\cdot,\cdot \right>_{K}\).
+
+Now, our big duality theorem
+
+\begin{theorem}
+	\(\left<\cdot,\cdot\right>_{K}\) is a perfect pairing.
+\end{theorem}
+
+This means that 
+\[
+	H^{i}(G_{K},M) \isom \Hom_{} (H^{2-i}(G_{K},M^{\star}),\mathbb{Q} / \mathbb{Z})
+\] 
+and vice versa.
+We want to think of the RHS as the dual of the LHS, but note that it 
+is not the same as the duality pairing from above. 
+
+Now, let us commence with the proof: 
+
+%Fix $K/\mathbb{Q}_p$ a finite extension. Let $M$ be a $G_K$-module. 
+%\vskip 5pt
+%\textbf{Definition}: We let $M^* = \text{Hom}(M, \mu_{\infty})$ denote the \textit{Tate Dual} of $M$. 
+%\vskip 5pt 
 Let $\phi \in M^*$, $g\in G_K$. We define $(g\phi)(m)=g\phi(g^{-1}m)$. 
 \vskip 5pt 
-\textbf{Example}: $M=\mathbb{Z}/n$ with trivial $G_K$ action gives $M^*\cong \mu_{n}\subset \overline{K}$. Essentially the Tate Dual in this case equips $\mathbb{Z}/n$ with some natural $G_K$ action.
 \vskip 5pt
 We obtain a $G_K$ equivariant pairing
 \[M\times M^* \to \mu_{\infty}\]
@@ -43,7 +90,12 @@ This induces the \textit{duality map}
 \vskip 3pt That is, it induces isomorphisms \[H^i(G_K,M) \to H^{2-i}(G_K, M^{*})^{\vee}, \quad  H^{2-i}(G_K,M^{*}) \to H^i(G_K, M)^{\vee},\]
 with $D^{\vee} = \text{Hom}(D, \mathbb{Q}/\mathbb{Z})$, homomorphisms in Ab.
 \vskip 5pt
-The proof will be in two parts, when $i=2$ and when $i=1$. $i=0$ follows from $i=2$ and the symmetry of the pairing (just dualize the isomorphisms). The $i=1$ will utilize the $i=2$ case and dimension shifting, so we prove $i=2$ first.
+The proof will be in two parts, when $i=2$ and when $i=1$. 
+$i=0$ follows from $i=2$ and the symmetry of the pairing 
+(just dualize the isomorphisms {\color{red} and check exactness?}). 
+The $i=1$ will utilize the $i=2$ case and dimension shifting, so we prove $i=2$ first.
+
+
 
 \begin{proof}
 $(i=2)$. We have $H^0(K,M^*)=(M^*)^{G_K}=\text{Hom}_{G_K}(M, \mu_{\infty})$, for if $\phi \in (M^*)^{G_K}$, then $\phi(gm)=(g\phi)(gm)=g\phi(g^{-1}gm)=g\phi(m)$. The other direction is similar.
@@ -60,10 +112,13 @@ Our goal is to show $\Theta_K$ is an isomorphism. To do this, we will use a simi
 \end{tikzcd}\]
 \textit{Proof of claim}: We have the following commutative diagram
 \[\begin{tikzcd}
-{H^2(G_L,M) } \arrow[rrd, "\varphi"] \arrow[r, "cor"] & {H^2(G_K,M)} \arrow[r, "\varphi"] & {H^2(G_K,\mu_{\infty})} \arrow[r, "Inv_K"]                    & \mathbb{Q}/\mathbb{Z}                             \\
-                                                      &                                   & {H^2(G_L,\mu_{\infty})} \arrow[r, "Inv_L"] \arrow[u, "cor"] & \mathbb{Q}/\mathbb{Z} \arrow[u, "Id", Rightarrow]
+ {H^2(G_K,M)} \arrow[r, "\varphi"] & {H^2(G_K,\mu_{\infty})} \arrow[r, "Inv_K"]                    & \mathbb{Q}/\mathbb{Z}                             \\\
+ {H^2(G_L,M) } \arrow[r, "\varphi"] \arrow[u, "cor"] & 
+ {H^2(G_L,\mu_{\infty})} \arrow[r, "Inv_L"] \arrow[u, "cor"] & \mathbb{Q}/\mathbb{Z} \arrow[u, "Id", Rightarrow]
 \end{tikzcd}\]
-The triangle on the left commutes because cor commutes with maps of Galois modules. The square on the right commutes by the final result of Sriram's talk.
+The square on the left commutes because cor commutes with maps of Galois modules. 
+The square on the right commutes by the final result the unramified 
+case {\color{red} insert reference}
 \par 
 \mbox{}\hfill \qedsymbol
 \\
@@ -95,6 +150,7 @@ But the cohomology of $G_K$ with coefficients in Ind$_1^{G_K}M$ can naturally be
 Then we have the SES's
 \[0 \to M \to N \to Q \to 0\]
 \[0 \to Q^* \to N^* \to M^* \to 0\]
+{\color{red} need to check exactness of hom here?}
 And these show that
 \[H^0(G_K, N) \to H^0(G_K, Q) \to H^1(G_K, M) \to 0\]
 \[H^2(G_K,N^*)^{\vee} \to H^2(G_K,Q^*)^{\vee} \to H^1(G_K,M^*)^{\vee}\]
