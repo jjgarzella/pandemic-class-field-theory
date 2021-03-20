@@ -76,9 +76,13 @@
 \newcommand{\Syl}{\operatorname{Syl}}
 %\newcommand{\Ind}{\operatorname{Ind}}
 
+\newcommand{\coproof}{{\color{red}\(\star\)} }
+
 % custom commands
 \newcommand{\gal}[2]{G(#1/#2)}
-\newcommand{\absgal}[1]{G_{#1})}
+\newcommand{\absgal}[1]{G_{#1}}
+\newcommand{\gk}{\absgal{K}}
+\newcommand{\gkur}{G_{K}^{ur}}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -110,7 +114,7 @@ inflation restriction exact sequence??
 %\import{sections/}{InvIsomorphism}
 \import{sections/}{corollaries}
 \import{sections/}{LocalDualityProof}
-
+\import{sections/}{reciprocity}
 \import{sections/}{ExistenceTheorem}
 
 % TODO:
@@ -118,19 +122,27 @@ inflation restriction exact sequence??
 %  get the ramified case straightened out with milne
 %  cite the normal basis theorem
 %  get the cohomology lemmas out of the ramified case
-%  get the HS Spec Seq Hilb 90 exact sequence trick figured out
-%  insert the bit of representations in corollary (3)
+%**  figure out the spectral sequence hilb90 trick, used twice
+%**  insert the bit of representations in corollary (3)
 %  separate cohomology fluff from substantive content in corollaries
-%  why is hom exact when we dualize
+%*  why is hom exact when we dualize
 %  proof of duality
-%  factor out the cup product functoriality lemmas
+%  factor out the cup product functoriality lemmas?
 %  ask if someone has notes for proof of reciprocity
-%  go through existence theorem
+%  understand existence theorem argument
 %  make list of exact sequences??
 %  cohomology arguments
-%    --> kummer theory
 %    --> dimension shifting
 %    --> spectral sequence
 %  remove all of the personal names
+%  uniformize uniformizers
+%  fix the two types of duals
+%  standardize notation for the norm
+
+%  show that the Artin map has dense image
+%  see why the diagram characterizes the map
+%  prove (1)
+%  prove (2)
+%  wave hands with (4)
 
 \end{document}

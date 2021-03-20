@@ -1,0 +1,316 @@
+
+\section{Local Artin Reciprocity}
+
+We begin this section with a lemma about 
+profinite completions
+
+\begin{lemma} \label{lem:double:dual}
+	Let \(A\) be an abelian group such that 
+	\(A / nA\) is finite for all \(n\). 
+	Then the double dual \(A^{\dual\dual}\) is the
+	profinite completion of \(A\), i.e.
+	\(A^{\dual\dual} \isom \lim_{n} A / nA\).
+
+	In particular, if \(A\) is profinite, 
+	\(A^{\dual\dual} \isom A\).
+\end{lemma}
+
+\begin{proof}
+	Omitted
+	{\color{red} not to bad for \(\mathbb{Z}\), in Patrikis' notes,
+    and finite groups are trivial I think.
+	For profinite groups, this is a special case of
+    Pontryagin duality.
+    I don't know how to do the general case}
+\end{proof}
+
+Traditionally, the local Artin map is presented as an injective
+homomorphism \(K^{\cross} \to \gk^{ab}\) with an assortment of
+functoriality properties. 
+We will state this version in good time, but on the road there
+let us take a chance to admire the following:
+
+\begin{theorem}
+	There exists a (suitably canonical) isomorphism
+	\[
+	r_{K} : \hat{K^{\cross}} \to \gk^{ab}
+	\] 
+\end{theorem}
+
+Constructing this isomorphism is the meat and potatoes
+of our proof of class field theory. 
+The rest will be garnishes and side dishes proved using
+facts about number theory and compatibility properties
+of the Tate pairing.
+
+\begin{proof}
+	The main strategy is to consider the dual of both
+	groups and proving that they are isomorphic.
+	Then, we dualize yet again and conclude the theorem
+	by Lemma \ref{lem:double:dual}.
+
+	We have elected to do the first step in a rather 
+	explicit (if dry) two-column format:
+
+	\begin{align*}
+		\left( \gk^{ab} \right)^{\dual} 
+		&\isom \Hom_{\text{cont}} (\gk^{ab},\mathbb{Q} / \mathbb{Z}) \\
+		&\isom \Hom_{\text{cont}} (\gk, \mathbb{Q} / \mathbb{Z})
+		&& \text{universal property of abelianization} \\
+		&\isom \colim_{n} \Hom_{\text{cont}} 
+		(\gk, \frac{1}{n}\mathbb{Z} / \mathbb{Z})
+		&& (*) \\
+		&\isom \colim_{n} H^{1}(\gk, \frac{1}{n}\mathbb{Z} / \mathbb{Z})
+		&& \text{Homogeneous cochain definition} \\
+		&\isom \colim_{n} 
+		\Hom_{} (H^{1}(\gk,\mu_{n}),\mathbb{Q} / \mathbb{Z})
+		&& \text{Tate duality theorem} \\
+		&\isom \colim_{n} \Hom_{} (K^{\times} / (K^{\times})^{n},
+		\mathbb{Q} / \mathbb{Z})
+		&& \text{Kummer Theory (Lemma \ref{lem:kummer:theory})} \\
+		&\isom \Hom_{\text{cont}} (K^{\times},\mathbb{Q} / \mathbb{Z})
+		&& (*) \\
+		&\isom (K^{\times})^{\dual}
+	\end{align*}
+	
+	A few remarks about the steps:
+
+	Both of the lines marked \((*)\) are justified by noting
+	that any such continuous homomorphism has finite image
+	due to the compactness of profinite groups, the discreteness
+	of \(\mathbb{Q} / \mathbb{Z}\), and the fact that a
+	homomorphism from a compact group to a discrete group has
+	finite image.
+
+	The map in the Tate duality step is precisely
+	\(\phi \mapsto \left<\phi, \cdot \right>\).
+	We could write things in terms of the right argument instead
+	of the left, but the result would be the same up to 
+	canonical isomorphisms by the symmetry of the Tate pairing.
+
+	Also note: the action for the cohomology is the trivial action.
+	That's what allows us to replace it with \(\Hom\) and use
+	Kummer theory.
+	
+	Now we use Lemma \ref{lem:double:dual}
+	as \(\gk^{ab}\) is profinite, it is isomorphic to it's double
+	dual. Likewise, \(K^{\times}\) is a finite direct sum of
+	a profinite group and a finitely generated group, so we have
+	that the double dual is \(\hat{K^{\times}}\).
+	
+	Thus, we take the isomorphism we obtain to be \(r_{K}\)
+\end{proof}
+
+Notice that \(\hat{K^{\times}}\) has a concrete descrption:
+as  \(\mathcal{O}_{K}^{\times}\) is profinite, we have
+\(\hat{K^{\times}} \isom \mathcal{O}_{K}^{\times} \times 
+\hat{\langle\varpi\rangle}\), where \(\varpi\) is a uniformizer.
+
+Another remark that may be interesting is the fact that despite all of
+the machinery we built out of group cohomology, the only
+case of local Tate duality that we used to define the Artin map
+had a trivial group action.
+
+Now that we have defined the Artin map on the profinite completion
+of \(K^{\times}\), let's state the definition of our more traditional
+version:
+
+\begin{theorem}
+	There is an injective continuous homomorphism 
+	$r_K:K^{\times}\to G_K^{ab}$ with dense image characterized 
+	by the commutativity of the diagram
+	\[
+	\begin{tikzcd}
+		& \Hom(K^{\times},\ZZ/n\ZZ)\times K^{\times}/(K^{\times})^{n}\ar[d,shift left=3.5em,"\text{Kummer}","\simeq"']\ar{r}{\text{eval}} & \ZZ/n\ZZ\ar[hookrightarrow]{d}{\cdot\frac{1}{n}}\\
+		\Hom(G_k^{ab},\ZZ/n\ZZ)\ar{ur}{r_K^{*}}\ar[equals]{r} & H^{1}(K,\ZZ/n\ZZ)\times H^{1}(K,\mu_n)\ar{r}{\langle\ ,\ \rangle_K} & \QQ/\ZZ 
+	\end{tikzcd}
+	.\] 
+\end{theorem}
+
+\begin{proof}
+	To define \(r_{K}\), we simply precompose with the inclusion
+	\[
+		K^{\cross} \inj \hat{K^{\times}} \xrightarrow{\sim}
+		\gk^{ab}
+	.\] 
+	
+	Seeing that \(r_{K}^{*}\) satisfies the diagram
+	amounts to seeing that the artin map essential is
+	taking \(\phi\) to \(\langle \phi, \cdot \rangle\).
+
+	\(r_{K}\) is injective by construction.
+	To see that it is continuous, we only need to note
+	that each \(K^{\times} \to K^{\times} / (K^{\times})^{n}\) 
+	is continuous, thus making the limit hold in the
+	category of topological abelian groups as well.
+	%TODO: flesh this out
+	The fact that the inclusion has dense image is a general fact
+	about the profinite completion.
+	%TODO: find/come up with the proof
+\end{proof}
+
+Now, we list six properties of the Artin map which are also 
+considered a part of class field theory.
+We will prove (1) and (2) in this section. 
+(3) and (4) are exercises for the reader, and 
+(5) and (6) will be proved in the next section.
+
+\begin{theorem}
+	The artin map has the following properties:
+	\begin{enumerate}[(1)]
+		\item For all finite extensions \(L / K\),
+			We have the commutative diagram
+			\[
+			\begin{tikzcd}
+			L^{\times} \arrow{r}{r_{L}} \arrow{d}[swap]{N_{L / K}} &
+			\absgal{L}^{ab} \arrow{d}{} \\
+			K^{\times} \arrow{r}{r_{K}} &
+			\gk^{ab}
+			\end{tikzcd}
+			\]
+			The unmarked map comes from the
+			universal property of the (profinite) abelianization.
+		\item 	
+			%TODO: introduce norm groups
+			%TODO: show that the quotient of abelian 
+			%      profinite galois groups is the abelianization
+			%      of the galois group of the galois closure
+			If \(L / K\) is finite Galois, then 
+			\(K^{\times} / N(L^{\times}) \isom \Gal(L / K)\)
+			via the Artin map.
+			If \(L / K\) is not Galois, then 
+			\(K^{\times} / N(L^{\times})\) is isomorphic
+			to the abelianization of \(\Gal(L / K)\),
+			where according to standard convention,
+			the Galois group of a non-abelian extension
+			is defined to be the Galois group of its 
+			Galois closure.
+		\item 
+			We have the ``transfer map'' diagram
+			\[
+			\begin{tikzcd}
+				K^{\times} \arrow{r}{r_{K}} 
+				\arrow[hookrightarrow]{d}{} &
+			\gk^{ab} \arrow{d}{V} \\
+			L^{\times} \arrow{r}{r_{L}} &
+			\absgal{L}^{ab}
+			\end{tikzcd}
+			,\]
+			where the transfer map \(V\) comes from 
+			the dual of corestriction.
+		\item
+			If \(a \in K^{\times}\), and 
+			\(\chi \in \Hom_{} (\gk,\mathbb{Q} / \mathbb{Z})\),
+			by the connecting homomorphism on cohomology
+			(using the homogeneous cochains definition)
+			we get \(\delta\chi \in H^{2}(\gk, \mathbb{Z})\).
+			Then we get 
+			\(a \cup \delta \chi \in H^{2}(K,\overline{k}^{\times})\).
+			And we have
+			\[
+				\chi(r_{K}(a) = - \inv_{K}(a \cup \delta\chi)
+			.\] 
+	\end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+	\begin{enumerate}[(1)]
+		\item We need to show that \(r_{K}(N_{L / K}(b) = r_{L}(b)\) 
+			for any \(b \in K^{\times}\).
+			By Pontryagin duality, we can check this on the
+			double dual group.
+			Thus, we need to show that
+			\(\chi(r_{K}(N_{L / K}(b))) = \chi(r_{L}(b))\) 
+			for all \(\chi \in \Hom_{\text{cont}} (\gk^{ab},
+			\mathbb{Q} / \mathbb{Z})\).
+
+			By tracing through the characterization diagram
+			and the definition of the duality pairing, 
+			we have that
+			\(\frac{1}{n}\chi(r_{L}(b) = 
+			\inv_{L}( \res(x) \cup \delta b)\)
+			where \(\delta\) comes from the isomorphism 
+			in Kummer Theory (this isomorphishm happens
+			to be a connecting map from a long exact sequene)
+			and the restriction is across the inclusion 
+			\(\absgal{L}^{ab} \inj \gk^{ab}\). 
+
+			By applying the corestriction diagram 
+			from the Brauer group
+			calculation \ref{thm:br:calc}, 
+			this becomes 
+			\(\inv_{K}(\cor(\res(\chi) \cup \delta b))\), 
+			which by the functoriality properties
+			of corestriction, becomes
+			\(\inv_{K} (\chi \cap \cor(\delta b)) \). 
+
+			Now, becuase of the obvious commutativity of the
+			diagram 
+			\[
+			\begin{tikzcd}
+				L^{\times} / (L^{\times})^{n} \arrow{r}{\delta} 
+				\arrow{d}[swap]{N_{L / K}} &
+				H^{1}(L, \mu_{n}) \arrow{d}{\cor} \\
+				K^{\times} / (K^{\times})^{n} \arrow{r}{\delta} &
+				H^{1}(K, \mu_{n})
+			\end{tikzcd}
+			\]
+			our expression becomes 
+			\(\inv_{K}(\chi \cup \delta(N_{L / K}(b)))
+			= \frac{1}{n} \chi(r_{K}(N_{L / K}(b)))\) 
+
+		\item 
+			By the constuction of \(r_{K}\), part (1), 
+			and taking cokernels, we have a diagram
+			\[
+			\begin{tikzcd}
+			L^{\times} \arrow{r}{N_{L / K}} \arrow{d}{r_{L}} &
+			K^{\times} \arrow{r}{} \arrow{d}{r_{K}} &
+			K^{\times} / N_{L / K} (L^{\times}) \arrow{d}{r_{L / K}} \\
+			\absgal{L}^{ab} \arrow{r}{} &
+			\gk^{ab} \arrow{r}{} &
+			\Gal(L / K)
+			\end{tikzcd}
+			\]
+			which defines \(r_{L / K}\). 
+
+			Now, we show that \(r_{L / K}\) is injective and 
+			surjective by a diagram chase.
+
+			\textbf{Surjective:}
+			Pick \(g \in \Gal(L / K)\). 
+			Let \(g^{\prime} \in \gk^{ab}\) 
+			be an element which maps to \(g\). 
+			As the Artin map has dense image, 
+			find a sequence \((a_{i})\) in \(K^{\times}\)
+			whose images converge to \(g\) in \(\gk^{ab}\).
+			By compactness of \(K^{\times} / N_{L / K}(L^{\times}\),
+			it contains a point which the images
+			of the \(a_{i}\) converge to, call it \(a\). 
+			By commutativity, \(a\) must map to \(g\). 
+
+			\textbf{Injective:} 
+			If \(a \in K^{\times}\) maps to \(1\),
+			then \(r_{K}(a)\) (which must thusly be
+			in \(\absgal{L}^{ab}\)) is
+			the limit of images \((b_{i})\) 
+			in \(L^{\times}\), under the map
+			\(r_{L}\). 
+			Thus, \(r_{K}(a) = \lim r_{K}(N_{L / K}(b_{i}))\).
+			Now, we have reduced our question
+			to the following claim:
+			\(K^{\times} \cap \overline{N_{L / K}(L^{\times})}
+			= N_{L / K}(L^{\times}\),
+			and this is an exercise in 
+			point set topology combined with the 
+			strucutre of the units of local fields.
+
+		\item Exercise
+		\item Use the characterizing diagram
+			and the properties of the cup product, 
+			left as an exercise.
+	\end{enumerate}
+\end{proof}
+
+

@@ -56,7 +56,7 @@
 % custom commands here
 
 \title{}
-\author{Jack J Garzella}
+%\author{Jack J Garzella}
 
 \begin{document}
 
@@ -68,11 +68,11 @@ At this point we have completely the first major
 milestone, calculating the Brauer group.
 Now, we deduce many consequences of this theorem 
 in terms of group cohomology that we will need later.
-Each of the proofs is more or less straightforward
-applications of the machinery of group cohomology,
-so if the reader is familiar with these methods
-or wants to save the gory details for later, the 
-proofs can be skipped.
+%Each of the proofs is more or less straightforward
+%applications of the machinery of group cohomology,
+%so if the reader is familiar with these methods
+%or wants to save the gory details for later, the 
+%proofs can be skipped.
 
 First, we consider a finite extension \(L / K\). 
 Hilbert Theorem 90 gives 
@@ -88,16 +88,17 @@ This combined with the theorem gives
 .\] 
 
 Therefore we have
-\begin{corollary}[Is this used anywhere?]
+\begin{corollary}[Is this used anywhere?] \coproof
 	\[
 		H^{2}(\Gal(L/K),\overline{L}^{\times})
 		\simeq\frac{1}{[L:K]}\ZZ/\ZZ.
 	\]
 \end{corollary}
 
-Let us prove another corollary:
-\begin{corollary}
-$\text{inv}_K: H^2(G_K, \mu_n) \xrightarrow{\sim} (1/n)\mathbb{Z}/\mathbb{Z}$ is an isomorphism, where $\mu_n$ denotes the group of $n$th roots of unity in $K$.
+Let us prove a few more corollaries
+\begin{corollary} \coproof
+$\text{inv}_K: H^2(G_K, \mu_n) \xrightarrow{\sim} 
+\frac{1}{n}\mathbb{Z}/\mathbb{Z}$ is an isomorphism, where $\mu_n$ denotes the group of $n$th roots of unity in $K$.
 \end{corollary}
 \begin{proof}
 Consider the exact sequence 
@@ -127,25 +128,11 @@ From the above, we know $\text{Br}(K)[N]=\frac{1}{n}\mathbb{Z}/\mathbb{Z}$
 %
 %Corollary 1 in Wei's talk
 
-
-\begin{proposition}
-Notation as above, let $I_K$ be the inertia group, then
-	\begin{enumerate}[(1)]
-		\item \(Br(K^{unr}) = 0\)
-		\item \(H^{2}(I_{K},\mu_{n}) = 0\) for all \(n\) with \(0 \leq n\)
-		\item If \(M\) is a torsion \(I_{K}\)-module, then
-			\(H^{i}(I_{K},M) = 0\) for all \(i\) with \(2 \leq i\)
-		\item If \(M\) is a finite \(G_{K}\)-module, then
-			for all \(i\), \(\left| H^{i}(G_{K},M) \right| < \infty\) 
-			and for \(i\) with \(3 \leq i\), 
-			\(H^{i}(G_{K},M) = 0\).
-	\end{enumerate}
-\end{proposition}
-
-
+\begin{corollary} \coproof
+	\(Br(K^{unr}) = 0\)
+\end{corollary}
 
 \begin{proof}
-	\begin{enumerate}[(1)]
 		\item The algebraic closure of \(K^{unr}\) is just \(\overline{K}\),
 			so we are trying to compute 
 			\(H^{2}(G_{\overline{K} / K^{unr}},\overline{K}^{\times})\).
@@ -174,6 +161,16 @@ Notation as above, let $I_K$ be the inertia group, then
 			the same under these multiplication maps. 
 			But the maps are multipication by an (arbitrarily large) constant,
 			and the module is torsion.
+	
+\end{proof}
+
+\begin{corollary} \coproof
+Let $I_K$ be the inertia group. Then
+	\(H^{2}(I_{K},\mu_{n}) = 0\) for all \(n\) greater than 
+	or equal to \(0\)
+\end{corollary}
+
+\begin{proof} 
 		\item Use the exact sequence (of modules) 
 			\[
 			1 \to \mu_{n} \to \overline{K}^{\cross} \to \overline{K}^{\cross}
@@ -190,22 +187,30 @@ Notation as above, let $I_K$ be the inertia group, then
 			Now, we need to remember that 
             \(I_{K} \isom \Gal\left( \overline{K} / K^{unr} \right)\).
 			With this in mind, we see that
-			the group on the left is zero by Hilbert Theorem 90
-			{\color{red} This isn't the exact formulation,
-			check precisely how hilb90 imply this}, and
+			the group on the left is zero by Hilbert Theorem 90,
+			%TODO:{\color{red} This isn't the exact formulation,
+			%check precisely how hilb90 imply this}
+			%, 
+			and
 			the first part of the proposition
 			says exactly that the group on the right is zero. 
 			We conclude our statement by exactness.
-			
-		\item 
+\end{proof}
+
+\begin{proposition} \coproof
+		 If \(M\) is a torsion \(I_{K}\)-module, then
+			\(H^{i}(I_{K},M) = 0\) for all \(i\) with \(2 \leq i\)
+\end{proposition}
+
+\begin{proof}
 			It suffices to consider
 			finite (and thus torsion) modules, by Corollary \ref{cor:lim:cohom}.
 			First, we will reduce to cohomological dimension 2 by dimension
 			shifting. 
-			{\color{red} factor out this dimension shifting argument?}
 			Assume \(H^{2}(M) = 0\) for all torsion modules \(M\).
 			First, fix \(M\) and embed it into an injective module \(I\) 
 			which is also torsion.
+			%TODO:{\color{red} perhaps justify why we can do this?}
 			(Think \(\mathbb{Q} / \mathbb{Z}\)).
 			Now, the quotient will be torsion and we have the short exact sequence
 			\[
@@ -229,7 +234,7 @@ Notation as above, let $I_K$ be the inertia group, then
 			Without loss of generality, (by Chinese Remainer Theorem)
 			assume that \(M\) is \(l^{\infty}\)-torsion for some prime 
 			\(l\).
-			Then, by Sriram's corollary 1.2 and taking limits by
+			Then, by {\color{red} reference?} Sriram's corollary 1.2 and taking limits by
 			Corollary \ref{cor:lim:cohom}, we have that the restriction
 			map \(res : H^{2}(I_{K},M) \to H^{2}(\Syl_{l}(I_{K}),M)\),
 			where \(\Syl_{l}(I_{K})\) is (any) pro-\(l\) Sylow Subgroup,
@@ -253,16 +258,30 @@ Notation as above, let $I_K$ be the inertia group, then
 			As the \(l\) does not divide the ramification index, every
 			element of \(I_{K}\) has order coprime to \(l\), giving us that 
 			the group is zero.
+\end{proof}
 
-		\item
+
+\begin{proposition} \label{prop:finite:module}
+%Notation as above, let $I_K$ be the inertia group, then
+If \(M\) is a finite \(G_{K}\)-module, then
+\begin{enumerate}[(i)]
+	\item For all \(i\), \(\left| H^{i}(G_{K},M) \right| < \infty\) 
+	\item \coproof For \(i\) with \(3 \leq i\), 
+			\(H^{i}(G_{K},M) = 0\).
+\end{enumerate}
+\end{proposition}
+
+
+
+\begin{proof}
 			We will use spectral sequences to calculate the cohomology
 			of \(G_{K}\). 
 			Our spectral sequence in this context will always "come from"
 			a "composition of operations".
-			Precisely this means a composition of \textit{derived functors},
-			or functors in the \textit{derived category}, but we do
-			not want to bother developing this (quite technical)
-			machinery, so we will limit ourselves to the following situation.
+			%Precisely this means a composition of \textit{derived functors},
+			%or functors in the \textit{derived category}, but we do
+			%not want to bother developing this (quite technical)
+			%machinery, so we will limit ourselves to the following situation.
 
 			When we have an exact sequence of groups
 			\[
@@ -279,7 +298,6 @@ Notation as above, let $I_K$ be the inertia group, then
 			\begin{enumerate}[(1)]
 				\item \(1 \to I_{K} \to G_{K} \to \Gal(K^{unr} / K) \to 1\) 
 				\item \(1 \to G_{L} \to G_{K} \to \Gal\left( L / K \right) \to 1\) 
-
 					for a finite \(L / K\).
 			\end{enumerate}
 					
@@ -327,24 +345,18 @@ Notation as above, let $I_K$ be the inertia group, then
 
 			For \(j=0\), the module is clearly finite (we are taking
 			invariants of a finite module).
-			For \(j=1\), we have the short exact sequence
+			For \(j=1\), we have Kummer Theory
+			telling us that \(H^{1}\) is isomorphic
+			to the finite group \(K^{\times} / (K^{\times})^{n}\).
+			For \(j = 2\), we have the exact sequence
 			\[
 			1 \to \mu_{n} \to \overline{L}^{\cross} \to 
 			\overline{L}^{\cross} \to 1
 			\] 
-			and Hibert Theorem 90.
-			For \(j = 2\), we have that same sequence and the 
-			computation of the Brauer group.
-			For \(2 \leq j\), the cohomology group vanishes, 
+			and the computation of the Brauer group.
+			For \(3 \leq j\), the cohomology group vanishes, 
 			as above.
 
-	\end{enumerate}
 \end{proof}
-
------
-
-
-
-
 
 \end{document}

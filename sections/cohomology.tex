@@ -29,6 +29,29 @@ It is worth remarking that the general version of this
 theorem is due to Noether, and the name comes from
 a weaker version that was originally proved by Hilbert.
 
+\subsubsection{Kummer Theory}
+
+\begin{lemma} \coproof \label{lem:kummer:theory}
+	\[
+		H^{1}(\gk,\mu_{n}) \isom 
+		\Hom_{} (\gk,\mu_{n}) \isom
+		K^{\times} / (K^{\times})^n
+	\] 
+	where the \(\gk\)-module action on \(\mu_{n}\) is
+	the trivial one.
+\end{lemma}
+
+\begin{proof}
+    uses the homogeneous cochain definition
+	of group cohomology for the first isomorphism.
+	Follows from the exact sequence
+	\[
+		0 \to \mu_{n} \to L^{\times} \to (L^{\times})^{n} \to 0
+	\] 
+	and use Hilbert Theorem 90 on the 
+	long exact sequence.
+\end{proof}
+
 \subsubsection{Shapiro's Lemma}
 
 For some subgroup \(H\) of \(G\), and an \(H\)-module \(N\),
@@ -93,6 +116,7 @@ It is this corollary that will be most useful to us later.
 
 \begin{itemize}
 	\item Periodicity of cohomology of cyclic groups
+	\item Herbrand quotient
 	\item Dimension shifting
 \end{itemize}
 
@@ -100,7 +124,6 @@ It is this corollary that will be most useful to us later.
 
 \subsubsection{Dimension Shifting}
 
-\subsubsection{Kummer Theory}
 
 \subsubsection{Hochschild-Serre Spectral Sequence}
 
@@ -251,4 +274,50 @@ Let $A$ be an abelian group, $p$ a prime. The subgroup
 	\] 
 	is multiplication by $[G:G_p]$, which is not divisible by $p$. It follows then that $\cor\circ\res$ is injective on the $p$-primary component of $H^{r}(G,M)$, so in particular $\res$ is.
 \end{proof}
+
+\subsection{Short Exact Sequences that We Like}
+
+{\color{red} are these first two actually the same?
+do I actually only want one of them?}
+\[
+\begin{tikzcd}
+0 \arrow{r}{} & \mu_{n} \arrow{r}{} & 
+K^{\times} \arrow{r}{\cdot n} & K^{\times} \arrow{r}{} & 0
+\end{tikzcd}
+\]
+
+\[
+\begin{tikzcd}
+0 \arrow{r}{} & \mu_{n} \arrow{r}{} & 
+K^{\times} \arrow{r}{-^{n}} & (K^{\times})^{n} \arrow{r}{} & 0
+\end{tikzcd}
+\]
+
+\[
+\begin{tikzcd}
+0 \arrow{r}{} & \mathcal{O}_{K}^{\times}  \arrow{r}{} & 
+K^{\times} \arrow{r}{\text{ord}} & \mathbb{Z} \arrow{r}{} & 0
+\end{tikzcd}
+\]
+
+\[
+\begin{tikzcd}
+0 \arrow{r}{} & \mathbb{Z} \arrow{r}{} & 
+\mathbb{Q} \arrow{r}{} & \mathbb{Q} / \mathbb{Z} \arrow{r}{} & 0
+\end{tikzcd}
+\]
+
+\[
+\begin{tikzcd}
+1 \arrow{r}{} & I_{K} \arrow{r}{} & 
+\gk \arrow{r}{\text{res}} & \gkur \arrow{r}{} & 1
+\end{tikzcd}
+\]
+
+\[
+\begin{tikzcd}
+	1 \arrow{r}{} & \absgal{L} \arrow{r}{} & 
+	\gk \arrow{r}{} & \Gal(L / K) \arrow{r}{} & 1
+\end{tikzcd}
+\]
 

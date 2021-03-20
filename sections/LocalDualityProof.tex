@@ -25,27 +25,27 @@ We will now state the local duality theorem.
 Later, this will have the reciprocity law as a consequence.
 
 \begin{definition}
-	Let \(M\) be a finite \(G_{K}\)-module. \(M^{\star} :=
+	Let \(M\) be a finite \(G_{K}\)-module. \(M^{\dual} :=
 	\Hom_{} (M,\mu_{\infty})\) is the \textit{Tate dual} of \(M\).
 \end{definition}
 
 Our action as a \(G_{K}\)-module is not exactly what you would expect.
 We have  \((g \cdot \phi)(m) = g \cdot \phi(g^{-1} m)\) for \(g \in G_{K}\),
-\(\phi \in M^{*}\), \(m \in M\).
+\(\phi \in M^{\dual}\), \(m \in M\).
 Note that there is an ``extra'' action of \(g\) in our construction,
 unlike (for example) the construction of the opposite group action.
 
-\textbf{Example}: $M=\mathbb{Z}/n$ with trivial $G_K$ action gives $M^*\cong \mu_{n}\subset \overline{K}$. Essentially the Tate Dual in this case equips $\mathbb{Z}/n$ with some natural $G_K$ action.
+\textbf{Example}: $M=\mathbb{Z}/n$ with trivial $G_K$ action gives $M^\dual\cong \mu_{n}\subset \overline{K}$. Essentially the Tate Dual in this case equips $\mathbb{Z}/n$ with some natural $G_K$ action.
 
 This gives us a \(G_{K}\)-equivariant map  
 \[
-\Phi : M \otimes M^{\star} \to \mu_{\infty}
+\Phi : M \otimes M^{\dual} \to \mu_{\infty}
 \] 
 (find the map from the product, it is \(\mathbb{Z}\)-bilinear).
 Now, the cup product gives us a map
 \[
-	H^{i}(G_{K},M) \times H^{2-i}(G_{K},M^{\star})
-	\to H^{2}(G_{K}, M \otimes_{Z} M^{\star})
+	H^{i}(G_{K},M) \times H^{2-i}(G_{K},M^{\dual})
+	\to H^{2}(G_{K}, M \otimes_{Z} M^{\dual})
 	\to H^{2}(G_{K}, \mu_{\infty})
 	\isom \mathbb{Q} / \mathbb{Z}
 \] 
@@ -61,7 +61,7 @@ Now, our big duality theorem
 
 This means that 
 \[
-	H^{i}(G_{K},M) \isom \Hom_{} (H^{2-i}(G_{K},M^{\star}),\mathbb{Q} / \mathbb{Z})
+	H^{i}(G_{K},M) \isom \Hom_{} (H^{2-i}(G_{K},M^{\dual}),\mathbb{Q} / \mathbb{Z})
 \] 
 and vice versa.
 We want to think of the RHS as the dual of the LHS, but note that it 
@@ -71,39 +71,60 @@ Now, let us commence with the proof:
 
 %Fix $K/\mathbb{Q}_p$ a finite extension. Let $M$ be a $G_K$-module. 
 %\vskip 5pt
-%\textbf{Definition}: We let $M^* = \text{Hom}(M, \mu_{\infty})$ denote the \textit{Tate Dual} of $M$. 
+%\textbf{Definition}: We let $M^\dual = \text{Hom}(M, \mu_{\infty})$ denote the \textit{Tate Dual} of $M$. 
 %\vskip 5pt 
-Let $\phi \in M^*$, $g\in G_K$. We define $(g\phi)(m)=g\phi(g^{-1}m)$. 
+Let $\phi \in M^\dual$, $g\in G_K$. We define $(g\phi)(m)=g\phi(g^{-1}m)$. 
 \vskip 5pt 
 \vskip 5pt
 We obtain a $G_K$ equivariant pairing
-\[M\times M^* \to \mu_{\infty}\]
+\[M\times M^\dual \to \mu_{\infty}\]
 \[(m, \phi) \mapsto \phi(m)\]
 This induces the \textit{duality map}
 
 \begin{tikzcd}
-{\langle \cdot, \cdot \rangle_K:H^i(G_K,M)\times H^{2-i}(G_K,M^*)} \arrow[r, "\cup"] \arrow[rrd, "{\langle \cdot, \cdot \rangle_K}"'] & {H^2(G_K, M \otimes_{\mathbb{Z}}M^*)} \arrow[r] & {H^2(G_K,\mu_{\infty})} \arrow[d, "inv_K", "\sim"'] \\
+{\langle \cdot, \cdot \rangle_K:H^i(G_K,M)\times H^{2-i}(G_K,M^\dual)} \arrow[r, "\cup"] \arrow[rrd, "{\langle \cdot, \cdot \rangle_K}"'] & {H^2(G_K, M \otimes_{\mathbb{Z}}M^\dual)} \arrow[r] & {H^2(G_K,\mu_{\infty})} \arrow[d, "inv_K", "\sim"'] \\
                                                                                                                                       &                                                 & \mathbb{Q}/\mathbb{Z}      
 \end{tikzcd}
 
 \textbf{Theorem}: Suppose $|M|<\infty$. $\langle \cdot, \cdot \rangle_K$ is a perfect pairing for $i=0,1,2$. 
-\vskip 3pt That is, it induces isomorphisms \[H^i(G_K,M) \to H^{2-i}(G_K, M^{*})^{\vee}, \quad  H^{2-i}(G_K,M^{*}) \to H^i(G_K, M)^{\vee},\]
+\vskip 3pt That is, it induces isomorphisms \[H^i(G_K,M) \to H^{2-i}(G_K, M^{\dual})^{\vee}, \quad  H^{2-i}(G_K,M^{\dual}) \to H^i(G_K, M)^{\vee},\]
 with $D^{\vee} = \text{Hom}(D, \mathbb{Q}/\mathbb{Z})$, homomorphisms in Ab.
 \vskip 5pt
 The proof will be in two parts, when $i=2$ and when $i=1$. 
 $i=0$ follows from $i=2$ and the symmetry of the pairing 
-(just dualize the isomorphisms {\color{red} and check exactness?}). 
+(dualize the isomorphisms, they remain isomorphsims since
+dualizing is a functor). 
 The $i=1$ will utilize the $i=2$ case and dimension shifting, so we prove $i=2$ first.
-
+{\color{red} we also need to check the other side of the dual.
+Is this by symmetry? By double dual?
+It turns out, the double dual of a finite abelian group
+is itself, as it is its own profinite completion, being
+trivially profinite. Does that do it?}
 
 
 \begin{proof}
-$(i=2)$. We have $H^0(K,M^*)=(M^*)^{G_K}=\text{Hom}_{G_K}(M, \mu_{\infty})$, for if $\phi \in (M^*)^{G_K}$, then $\phi(gm)=(g\phi)(gm)=g\phi(g^{-1}gm)=g\phi(m)$. The other direction is similar.
+$(i=2)$. We have 
+$H^0(K,M^\dual)=(M^\dual)^{G_K}=\text{Hom}_{G_K}(M, \mu_{\infty})$.
+To justify the second equality, if 
+$\phi \in (M^\dual)^{G_K}$, then 
+$\phi(gm)=(g\phi)(gm)=g\phi(g^{-1}gm)=g\phi(m)$. 
+The other inclusion is similar.
 \par 
 $\phi \in \text{Hom}_{G_K}(M,\mu_{\infty})$ induces a map $H^2(G_K,M) \to H^2(G_K,\mu_{\infty})$ by evaluation, which we also denote by $\phi$. The duality map then identifies to
 \[\Theta_K:\text{Hom}_{G_K}(M, \mu_{\infty}) \to H^2(G_K,M)^{\vee}\]
 \[\phi \mapsto \text{inv}_K\circ \phi :H^2(G_K,M)\to \mathbb{Q}/\mathbb{Z}\]
-Our goal is to show $\Theta_K$ is an isomorphism. To do this, we will use a similar trick to JJ's spectral sequence argument. We will take a cleverly chosen finite extension $L/K$ so that $L$ is "simple". First we want to know that understanding the corresponding $\Theta_L$ maps gives us information about $\Theta_K$. This is contained in the following two claims:
+Our goal is to show $\Theta_K$ is an isomorphism. 
+The big idea is to reduce to the case when \(M\) is 
+\(\mu_{n}\), the \(n\)-th roots of unit module with the trivial
+action.
+The reduction uses a similar trick to the proof of 
+Proposition \ref{prop:finite:module} part (i).
+We will take a cleverly chosen finite extension 
+$L/K$ so that $M$ is ``simpler''. 
+Before we do this though, we want to know that 
+understanding the corresponding $\Theta_L$ maps 
+gives us information about $\Theta_K$. 
+This is contained in the following two claims:
 \vskip 5pt
 \textbf{Claim 1}: The following diagram commutes.
 \[\begin{tikzcd}
@@ -135,7 +156,9 @@ To show that cor$^{\vee}$ is injective, we show cor is surjective. Recall that c
 \par 
 \mbox{}\hfill \qedsymbol
 \\
-Following the technique illustrated by JJ's talk, we choose $L/K$ finite so that $G_L$ acts on both $M$ and $\mu_{|M|}$ trivially. Thus $M$ as a $G_L$ module is a sum of $\mu_{n_i}$'s, so for our purposes we may assume $M=\mu_n$ for some $n$.
+Following the technique illustrated in 
+Proposition \ref{prop:finite:module} part (i), 
+we choose $L/K$ finite so that $G_L$ acts on both $M$ and $\mu_{|M|}$ trivially. Thus $M$ as a $G_L$ module is a sum of $\mu_{n_i}$'s, so for our purposes we may assume $M=\mu_n$ for some $n$.
 \vskip 5pt
 The proof then follows by noting the obvious commutativity of the following diagram.
 \[\begin{tikzcd}
@@ -143,38 +166,39 @@ The proof then follows by noting the obvious commutativity of the following diag
 r \arrow[u, maps to] & \mathbb{Z}/n \arrow[u, "\sim"] \arrow[r, "\sim"]       & {Hom((\frac{1}{n}\mathbb{Z})/\mathbb{Z}, \mathbb{Q}/\mathbb{Z})} \arrow[u, "inv_K^{\vee}"] \\
                      & r \arrow[r, maps to]                                   & (\frac{1}{n} \mapsto \frac{r}{n})                                                         
 \end{tikzcd}\]
-$(i=1)$: We want to apply dimension shifting. The problem is, in dimension shifting we have to deal with a $G_K$ module which is not finite, so we won't be able to apply our $i=2/i=0$ cases.
+$(i=1)$: \coproof
+We want to apply dimension shifting. The problem is, in dimension shifting we have to deal with a $G_K$ module which is not finite, so we won't be able to apply our $i=2/i=0$ cases.
 \vskip 5pt
 But the cohomology of $G_K$ with coefficients in Ind$_1^{G_K}M$ can naturally be written as the direct limit of the cohomology of $G_K$ with coefficients in finite submodules of Ind$_1^{G_K}M$. Thus $M$ must embed in some finite submodule $N$ of Ind$_1^{G_K}M$ such that $H^j(G_K,N)=0$ for $j\geq 1$.
 \vskip 5pt 
 Then we have the SES's
 \[0 \to M \to N \to Q \to 0\]
-\[0 \to Q^* \to N^* \to M^* \to 0\]
+\[0 \to Q^\dual \to N^\dual \to M^\dual \to 0\]
 {\color{red} need to check exactness of hom here?}
 And these show that
 \[H^0(G_K, N) \to H^0(G_K, Q) \to H^1(G_K, M) \to 0\]
-\[H^2(G_K,N^*)^{\vee} \to H^2(G_K,Q^*)^{\vee} \to H^1(G_K,M^*)^{\vee}\]
+\[H^2(G_K,N^\dual)^{\vee} \to H^2(G_K,Q^\dual)^{\vee} \to H^1(G_K,M^\dual)^{\vee}\]
 are exact. 
 \vskip 5pt
 These give rise to the commutative diagram
 \[\begin{tikzcd}
 {H^0(G_K,N)} \arrow[r] \arrow[d, "\sim"'] & {H^0(G_K, Q)} \arrow[r] \arrow[d, "\sim"'] & {H^1(G_K,M)} \arrow[r] \arrow[d] & 0 \\
-{H^2(K, N^*)^{\vee}} \arrow[r]            & {H^2(G_K, Q^*)^{\vee}} \arrow[r]           & {H^1(G_K,M^*)^{\vee}}            &  
+{H^2(K, N^\dual)^{\vee}} \arrow[r]            & {H^2(G_K, Q^\dual)^{\vee}} \arrow[r]           & {H^1(G_K,M^\dual)^{\vee}}            &  
 \end{tikzcd}\]
 with exact rows. The left hand vertical arrows are isomorphisms by the $i=2/i=0$ cases of the theorem. 
 \vskip 5pt
-By a diagram chase, $H^1(G_K,M) \hookrightarrow H^1(G_K, M^*)^{\vee}$, and by symmetry $H^1(G_K, M^*) \hookrightarrow H^1(G_K, M)^{\vee}$ so 
+By a diagram chase, $H^1(G_K,M) \hookrightarrow H^1(G_K, M^\dual)^{\vee}$, and by symmetry $H^1(G_K, M^\dual) \hookrightarrow H^1(G_K, M)^{\vee}$ so 
 \begin{tikzcd} 
-H^1(G_K,M) \arrow[r, tail, twoheadrightarrow] & H^1(G_K,M^*)^{\vee}
+H^1(G_K,M) \arrow[r, tail, twoheadrightarrow] & H^1(G_K,M^\dual)^{\vee}
 \end{tikzcd}
 Thus the finite groups have the same order, so the maps must be isomorphisms.
 \end{proof}
 
 Let us now establish a few functorial properties of the pairing.
 \vskip 5pt 
-\textbf{Theorem}: The duality map $\langle \cdot, \cdot \rangle_K: H^i(G_K,M)\times H^{2-i}(G_K,M^*) \to \mathbb{Q}/\mathbb{Z}$ satisfies the following properties:
+\textbf{Theorem}: The duality map $\langle \cdot, \cdot \rangle_K: H^i(G_K,M)\times H^{2-i}(G_K,M^\dual) \to \mathbb{Q}/\mathbb{Z}$ satisfies the following properties:
 \begin{enumerate}
-    \item Given $L/K$ finite, $x\in H^i(G_K,M)$, $y\in H^{2-i}(G_L, M^*)$, we have $\langle x, \text{cor}(y)\rangle_K = \langle \text{res}(x), y\rangle_L$.
+    \item Given $L/K$ finite, $x\in H^i(G_K,M)$, $y\in H^{2-i}(G_L, M^\dual)$, we have $\langle x, \text{cor}(y)\rangle_K = \langle \text{res}(x), y\rangle_L$.
     \item With the same notation as above, $\langle \text{res}(x), \text{res}(y)\rangle_L = [L:K]\langle x, y \rangle_K$.
 \end{enumerate}
 \begin{proof}
